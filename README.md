@@ -34,15 +34,11 @@ O conteúdo do **Dashboard** é ajustado de acordo com o perfil do usuário aute
   - Consultas **concluídas** ou **canceladas** não podem ser editadas.
   - Consultas **canceladas** não podem ser marcadas como concluídas.
 
----
-
 ## 🛠️ Tecnologias Utilizadas
 - **Angular**: Framework principal para desenvolvimento da aplicação.
 - **TypeScript**: Tipagem estática para maior segurança no código.
 - **HTML e SCSS**: Para estilização e estruturação da interface.
 - **API Rest**: Para persistência de dados, baseada no repositório disponibilizado pelo professor.
-
----
 
 ## ⚙️ Instalação e Execução
 
@@ -69,12 +65,10 @@ ng start
 ```
 Acesse a aplicação em: `http://localhost:4200`
 
----
 
 ## 👩‍💻 Desenvolvedores
 Desenvolvido com 💙 pela equipe **Equipe 02**.
 
----
 
 ## 📝 Licença
 Este projeto está licenciado sob a Licença MIT. Consulte o arquivo LICENSE para mais informações.
