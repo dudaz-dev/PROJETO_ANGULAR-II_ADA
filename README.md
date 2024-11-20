@@ -2,8 +2,6 @@
 
 Este projeto é o trabalho final do módulo **Angular II**, consistindo no desenvolvimento de uma aplicação para o gerenciamento de consultas médicas. O objetivo é aplicar os conceitos aprendidos ao longo do curso, criando uma solução funcional e organizada.
 
----
-
 ## 🌟 Funcionalidades Principais
 
 ### 1. **Cadastro e Login de Usuários**
