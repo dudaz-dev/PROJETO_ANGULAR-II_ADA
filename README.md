@@ -1,14 +1,15 @@
-# 🏥 Gerenciador de Consultas Médicas
+## 🏥 Gerenciador de Consultas Médicas
 
 Este projeto é o trabalho final do módulo **Angular II**, consistindo no desenvolvimento de uma aplicação para o gerenciamento de consultas médicas. O objetivo é aplicar os conceitos aprendidos ao longo do curso, criando uma solução funcional e organizada.
 
 ## 🌟 Funcionalidades Principais
 
 ### 1. **Cadastro e Login de Usuários**
-- **Tela de Cadastro**: Permite a criação de usuários com dois perfis disponíveis:
+**Tela de Cadastro**: Permite a criação de usuários com dois perfis disponíveis:
   - **USER**: Usuário comum, com permissões restritas.
   - **ADMIN**: Usuário administrador, com acesso completo.
-- **Tela de Login**: Autentica o usuário, redirecionando-o ao **Dashboard** com base no seu perfil.
+
+**Tela de Login**: Autentica o usuário, redirecionando-o ao **Dashboard** com base no seu perfil.
 
 ### 2. **Dashboard Personalizado**
 O conteúdo do **Dashboard** é ajustado de acordo com o perfil do usuário autenticado:
@@ -16,23 +17,23 @@ O conteúdo do **Dashboard** é ajustado de acordo com o perfil do usuário aute
 #### **Perfil ADMIN**
 - Visualiza **todas as consultas** agendadas no sistema.
 - Pode:
-  - **Cancelar consultas.**
-  - **Marcar consultas como concluídas.**
+   **Cancelar consultas,**
+   **Marcar consultas como concluídas.**
 
 #### **Perfil USER**
 - Visualiza apenas suas próprias consultas.
 - Pode:
-  - **Editar consultas.**
-  - **Cancelar consultas.**
+ **Editar consultas**, **Cancelar consultas.**
 
 ### 3. **Gerenciamento de Consultas**
-- Os usuários podem acompanhar e gerenciar suas consultas conforme os seguintes **status**:
-  - **SCHEDULED** (Agendada): Status padrão ao criar uma consulta.
-  - **DONE** (Concluída): Indica que a consulta foi realizada.
-  - **CANCELED** (Cancelada): Consulta cancelada.
-- **Regras de negócio**:
-  - Consultas **concluídas** ou **canceladas** não podem ser editadas.
-  - Consultas **canceladas** não podem ser marcadas como concluídas.
+ Os usuários podem acompanhar e gerenciar suas consultas conforme os seguintes **status**:
+- **SCHEDULED** (Agendada): Status padrão ao criar uma consulta.
+- **DONE** (Concluída): Indica que a consulta foi realizada.
+- **CANCELED** (Cancelada): Consulta cancelada.
+
+ **Regras de negócio**:
+- Consultas **concluídas** ou **canceladas** não podem ser editadas.
+- Consultas **canceladas** não podem ser marcadas como concluídas.
 
 ## 🛠️ Tecnologias Utilizadas
 - **Angular**: Framework principal para desenvolvimento da aplicação.
