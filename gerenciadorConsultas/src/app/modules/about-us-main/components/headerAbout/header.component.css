@@ -1,0 +1,41 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar{
+  height: 80px;
+  color: #fff;
+  background-color: #029743;
+  font-size: 1rem;
+
+}
+
+.image{
+  height: 100%;
+  padding: 0 24px;
+}
+
+.about{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  width: 136px;
+  height: 100%;
+  margin-left: 24px;
+  border-bottom-width: 5px;
+  border-bottom-style: solid;
+  border-color: #fff;
+}
+
+.buttonHeader{
+  display: flex;
+  gap: 24px;    
+}
+
+.buttonHeader button, mat-icon{
+  color: #029743;
+  font-size: 1rem;
+}
+
