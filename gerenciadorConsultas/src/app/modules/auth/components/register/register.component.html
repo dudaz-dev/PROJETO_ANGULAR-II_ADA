@@ -33,12 +33,14 @@
   </a>
 </header>
 
-<main class="register_main">
-  <img
-    class="img-fluid"
-    src="assets/img/logo4.svg"
-    alt="Logo da Medic Exames."
-  />
+<main class="register_main container">
+  <div class="d-flex">
+    <img
+      class="img-fluid"
+      src="assets/img/logo4.svg"
+      alt="Logo da Medic Exames."
+    />
+  </div>
 
   <div class="register_form_container">
     <div>
@@ -64,14 +66,112 @@
           </mat-form-field>
         </div>
 
+        <div class="col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>CPF</mat-label>
+            <input
+              matInput
+              formControlName="documentNumber"
+              placeholder="000.000.000-00"
+              mask="000.000.000-00"
+            />
+
+            @if (form.controls['documentNumber'].hasError('required')) {
+            <mat-error>CPF obrigatório.</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-6">
+          <mat-form-field class="w-100">
+            <mat-label>Telefone</mat-label>
+            <input
+              type="tel"
+              matInput
+              formControlName="phone"
+              placeholder="(00) 00000-0000"
+              mask="(00) 00000-0000"
+            />
+
+            @if (form.controls['phone'].hasError('required')) {
+            <mat-error>Telefone obrigatório.</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
         <div class="col-md-12">
           <mat-form-field class="w-100">
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" mask="A*@A*.SSS" />
+            <input
+              type="email"
+              matInput
+              formControlName="email"
+              placeholder="exemplo@email.com"
+            />
 
             @if (form.controls['email'].hasError('required')) {
             <mat-error>E-mail obrigatório.</mat-error>
+            } @else if (form.controls['email'].hasError('email')) {
+            <mat-error>E-mail inválido.</mat-error>
             }
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-5">
+          <mat-form-field class="w-100">
+            <mat-label>CEP</mat-label>
+            <input
+              matInput
+              formControlName="zipCode"
+              placeholder="00000-000"
+              mask="00000-000"
+              (blur)="fetchAddress()"
+            />
+
+            @if (form.controls['zipCode'].hasError('required')) {
+            <mat-error>CEP obrigatório.</mat-error>
+            } @else if (errorMessage) {
+            <mat-error>{{ errorMessage }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-7">
+          <mat-form-field class="w-100">
+            <mat-label>Rua</mat-label>
+            <input matInput formControlName="street" />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field class="w-100">
+            <mat-label>Número</mat-label>
+            <input type="number" matInput formControlName="number" />
+
+            @if (form.controls['number'].hasError('required')) {
+            <mat-error>Nº obrigatório.</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-5">
+          <mat-form-field class="w-100">
+            <mat-label>Bairro</mat-label>
+            <input matInput formControlName="neighborhood" />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3">
+          <mat-form-field class="w-100">
+            <mat-label>UF</mat-label>
+            <input matInput formControlName="state" />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-12">
+          <mat-form-field class="w-100">
+            <mat-label>Cidade</mat-label>
+            <input matInput formControlName="city" />
           </mat-form-field>
         </div>
 
@@ -80,13 +180,13 @@
             <mat-label>Senha</mat-label>
             <input matInput formControlName="password" />
 
-            @if (form.controls['password'].hasError('required')) {
-            <mat-error>Campo obrigatório.</mat-error>
+            @if (form.controls['password'].hasError('requiredPassword')) {
+            <mat-error>Senha obrigatória.</mat-error>
             } @else if (form.controls['password'].hasError('emptyPassword')) {
             <mat-error>Senha inválida.</mat-error>
             } @else if (form.controls['password'].hasError('minLengthPassword'))
             {
-            <mat-error>A senha deve ter pelo menos 5 caracteres.</mat-error>
+            <mat-error>Pelo menos 5 caracteres.</mat-error>
             }
           </mat-form-field>
         </div>
@@ -98,7 +198,7 @@
 
             @if (form.controls['passwordConfirm'].hasError('required')) {
             <mat-error>Campo obrigatório.</mat-error>
-            } @else if (form.errors?.['passwordMatchError']) {
+            } @else if (form.errors?.['passwordMatchError'] && form.touched) {
             <mat-error>As senhas não coincidem.</mat-error>
             }
           </mat-form-field>
