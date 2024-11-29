@@ -56,7 +56,7 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-md-12">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Nome</mat-label>
             <input matInput formControlName="name" />
 
@@ -67,7 +67,7 @@
         </div>
 
         <div class="col-md-6">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>CPF</mat-label>
             <input
               matInput
@@ -83,7 +83,7 @@
         </div>
 
         <div class="col-md-6">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Telefone</mat-label>
             <input
               type="tel"
@@ -100,7 +100,7 @@
         </div>
 
         <div class="col-md-12">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Email</mat-label>
             <input
               type="email"
@@ -118,7 +118,7 @@
         </div>
 
         <div class="col-md-5">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>CEP</mat-label>
             <input
               matInput
@@ -137,14 +137,14 @@
         </div>
 
         <div class="col-md-7">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Rua</mat-label>
             <input matInput formControlName="street" />
           </mat-form-field>
         </div>
 
         <div class="col-md-4">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Número</mat-label>
             <input type="number" matInput formControlName="number" />
 
@@ -155,28 +155,28 @@
         </div>
 
         <div class="col-md-5">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Bairro</mat-label>
             <input matInput formControlName="neighborhood" />
           </mat-form-field>
         </div>
 
         <div class="col-md-3">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>UF</mat-label>
             <input matInput formControlName="state" />
           </mat-form-field>
         </div>
 
         <div class="col-md-12">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Cidade</mat-label>
             <input matInput formControlName="city" />
           </mat-form-field>
         </div>
 
         <div class="col-md-6">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Senha</mat-label>
             <input matInput formControlName="password" />
 
@@ -192,7 +192,7 @@
         </div>
 
         <div class="col-md-6">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Confirme sua senha</mat-label>
             <input matInput formControlName="passwordConfirm" />
 
@@ -205,7 +205,7 @@
         </div>
 
         <div class="col-md-12">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Tipo de Usuário</mat-label>
             <mat-select formControlName="role">
               <mat-option value="USER">Paciente</mat-option>
