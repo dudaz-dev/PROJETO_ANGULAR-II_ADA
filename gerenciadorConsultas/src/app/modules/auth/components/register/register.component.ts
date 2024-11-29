@@ -65,6 +65,11 @@ export class RegisterComponent implements OnInit {
       });
   }
 
+  onSubmit(): void {
+    this.form.controls['role'].enable();
+    console.log(this.form);
+  }
+
   protected changeRoleToAdmin() {
     const role = 'ADMIN';
     this.form.controls['role'].enable();
