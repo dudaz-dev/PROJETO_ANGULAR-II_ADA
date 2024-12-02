@@ -1,0 +1,38 @@
+<app-header></app-header>
+
+<div class="containerDiv">
+  
+    <div class="text">
+        <h2 class="my-4">Recuperação de Senha</h2>
+        <p>Para você recuperar a sua senha, digite o seu e-mail de usuário cadastrado no sistema. Uma mensagem será enviada solicitando a confirmação de recuperação da sua senha.</p>
+        
+        <form>
+          <fieldset>
+            <legend>E-mail da sua conta</legend>
+            <div>
+              <mat-form-field appearance="outline">
+                <mat-label>Digite aqui seu e-mail...</mat-label>
+                <input matInput formControlName="email" />
+              </mat-form-field>
+            </div>
+          </fieldset>          
+        </form>
+
+        <section class="buttons">
+          <div>
+            <button mat-raised-button routerLink="" class="confirm ">
+              Confirmar
+            </button>
+          </div>
+
+          <div>
+            <button mat-raised-button routerLink="" class="cancel ">
+              Cancelar
+            </button>
+          </div>
+        </section>
+      
+    </div>  
+</div>
+
+<app-footer></app-footer>
