@@ -1,0 +1,13 @@
+<div class="appointments-container">
+  <h2>Suas próximas consultas agendadas</h2>
+  <div class="appointment-list">
+    <div class="appointment-card" *ngFor=" let appointment of appointments">
+      <div class="title">{{ appointment.specialty }}</div>
+      <div class="details">
+        <span>{{ appointment.doctor }}</span>
+        <span>{{ appointment.location }}</span>
+      </div>
+      <div class="date-time">{{ appointment.date }} - {{ appointment.time }}</div>
+    </div>
+  </div>
+</div>
