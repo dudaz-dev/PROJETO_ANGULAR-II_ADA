@@ -1,39 +1,6 @@
-<header
-  [ngClass]="{
-    register_header_user: roleValue === 'USER',
-    register_header_admin: roleValue === 'ADMIN'
-  }"
->
-  <div class="register_header_buttons">
-    <button mat-raised-button (click)="changeRoleToUser()">
-      <mat-icon
-        [ngClass]="{
-          btn_content_user: roleValue === 'USER',
-          btn_content_user2: roleValue === 'ADMIN'
-        }"
-        >person</mat-icon
-      >
-      <span
-        [ngClass]="{
-          btn_content_user: roleValue === 'USER',
-          btn_content_user2: roleValue === 'ADMIN'
-        }"
-        >USUÁRIO</span
-      >
-    </button>
+<app-header [currentRole]="roleValue" (roleChange)="onRoleChange($event)"></app-header>
 
-    <button mat-raised-button id="btn_admin" (click)="changeRoleToAdmin()">
-      <mat-icon class="btn_content_admin">person</mat-icon>
-      <span class="btn_content_admin">COOPERADOR</span>
-    </button>
-  </div>
-
-  <a routerLink="/login">
-    <mat-icon id="login_icon">login</mat-icon>
-  </a>
-</header>
-
-<main class="register_main container">
+<main class="container">
   <div class="d-flex">
     <img
       class="img-fluid"
@@ -42,9 +9,9 @@
     />
   </div>
 
-  <div class="register_form_container">
-    <div>
-      <p>
+  <div class="form_container">
+    <div class="d-flex gap-3 flex-column">
+      <p class="welcome">
         Bem-vindo
         {{ roleValue === "USER" ? "novo cliente" : "Colaborador" }}
       </p>
@@ -117,7 +84,7 @@
           </mat-form-field>
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-6">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>CEP</mat-label>
             <input
@@ -136,7 +103,7 @@
           </mat-form-field>
         </div>
 
-        <div class="col-md-7">
+        <div class="col-md-6">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Rua</mat-label>
             <input matInput formControlName="street" />
@@ -178,7 +145,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Senha</mat-label>
-            <input matInput formControlName="password" />
+            <input type="password" matInput formControlName="password" />
 
             @if (form.controls['password'].hasError('requiredPassword')) {
             <mat-error>Senha obrigatória.</mat-error>
@@ -194,7 +161,7 @@
         <div class="col-md-6">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Confirme sua senha</mat-label>
-            <input matInput formControlName="passwordConfirm" />
+            <input type="password" matInput formControlName="passwordConfirm" />
 
             @if (form.controls['passwordConfirm'].hasError('required')) {
             <mat-error>Campo obrigatório.</mat-error>

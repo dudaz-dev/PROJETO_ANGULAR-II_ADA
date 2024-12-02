@@ -16,10 +16,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { NgxMaskDirective } from 'ngx-mask';
 import { AuthService } from '../../services/auth.service';
 import { ViaCepService } from '../../services/via-cep.service';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-register',
@@ -30,10 +31,10 @@ import { ViaCepService } from '../../services/via-cep.service';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    RouterLink,
     ReactiveFormsModule,
     NgxMaskDirective,
     CommonModule,
+    HeaderComponent,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
@@ -56,7 +57,10 @@ export class RegisterComponent implements OnInit {
       city: new FormControl({ value: null, disabled: true }),
       password: new FormControl(null, [this.validatePassword]),
       passwordConfirm: new FormControl(null, [Validators.required]),
-      role: new FormControl({ disabled: true, value: 'USER' }),
+      role: new FormControl({
+        disabled: true,
+        value: 'USER',
+      }),
     },
     {
       validators: matchPasswordValidator,
@@ -99,15 +103,7 @@ export class RegisterComponent implements OnInit {
     this.form.controls['role'].disable();
   }
 
-  protected changeRoleToAdmin() {
-    const role = 'ADMIN';
-    this.form.controls['role'].enable();
-    this.form.controls['role'].setValue(role);
-    this.form.controls['role'].disable();
-  }
-
-  protected changeRoleToUser() {
-    const role = 'USER';
+  onRoleChange(role: string): void {
     this.form.controls['role'].enable();
     this.form.controls['role'].setValue(role);
     this.form.controls['role'].disable();
