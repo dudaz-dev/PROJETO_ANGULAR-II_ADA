@@ -3,6 +3,7 @@ import { AboutUsMainComponent } from './modules/about-us-main/about-us-main.comp
 import { LoginComponent } from './modules/auth/components/login/login.component';
 import { RegisterComponent } from './modules/auth/components/register/register.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
+import { RecoveryComponent } from './modules/auth/components/recovery/recovery.component';
 
 export const routes: Routes = [
 
@@ -23,6 +24,10 @@ export const routes: Routes = [
   {
     path:'register',
     component: RegisterComponent,
+  },
+  {
+    path:'recovery',
+    component: RecoveryComponent,
   },
   {
     path:'**',
