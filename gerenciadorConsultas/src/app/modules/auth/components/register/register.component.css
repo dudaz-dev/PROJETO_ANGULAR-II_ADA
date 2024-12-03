@@ -7,10 +7,11 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 32px;
 }
 
 .form_container {
-  width: 464px;
+  width: 564px;
   padding: 0 16px;
   color: #000;
 
