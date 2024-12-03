@@ -1,1 +1,36 @@
-<p>login works!</p>
+<main class="container">
+    <div class="banner-section">
+        <div class="logo-section">
+            <img src="../../../../../assets/img/logo4.svg" alt="Medic Exam Logo" class="logo" />
+        </div>
+
+        <div class="cards-section">
+            <div class="card" *ngFor="let user of users">
+                <img [src]="user.image" alt="User Avatar" class="avatar" />
+                <p class="user-name">{{ user.name }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="login-section">
+        <div class="header-login-section header-bg">
+            <app-header></app-header>
+        </div>
+        <p>Bem-vindo de volta</p>
+        <h2>Faça login na sua conta</h2>
+        <form>
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input id="login" type="text" placeholder="Marco Polo" />
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input id="senha" type="password" placeholder="********" />
+            </div>
+            <button type="submit" class="btn">Entrar</button>
+        </form>
+        <footer>
+            <small>&copy;Desenvolvido por Equipe 02</small>
+        </footer>
+    </div>
+</main>
