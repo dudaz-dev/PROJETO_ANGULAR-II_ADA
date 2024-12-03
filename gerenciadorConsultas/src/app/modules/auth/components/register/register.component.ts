@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { NgxMaskDirective } from 'ngx-mask';
+import { FooterComponent } from '../../../../common/components/footer/footer.component';
 import { AuthService } from '../../services/auth.service';
 import { ViaCepService } from '../../services/via-cep.service';
 import { HeaderComponent } from '../header/header.component';
@@ -35,6 +36,7 @@ import { HeaderComponent } from '../header/header.component';
     NgxMaskDirective,
     CommonModule,
     HeaderComponent,
+    FooterComponent,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',

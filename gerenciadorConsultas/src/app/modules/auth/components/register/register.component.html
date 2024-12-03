@@ -1,7 +1,4 @@
-<app-header
-  [currentRole]="roleValue"
-  (roleChange)="onRoleChange($event)"
-></app-header>
+<app-header [currentRole]="roleValue" (roleChange)="onRoleChange($event)" />
 
 <main class="container">
   <div class="d-flex">
@@ -198,6 +195,4 @@
   </div>
 </main>
 
-<footer>
-  <small>&copy;Desenvolvido por Equipe 02</small>
-</footer>
+<app-footer />

@@ -49,22 +49,6 @@ h1 {
   opacity: 0.4;
 }
 
-footer {
-  font-size: 18px;
-  font-weight: 700;
-  color: #000;
-  height: 50px;
-  width: 100%;
-  margin-top: 48px;
-
-  display: flex;
-  align-items: center;
-}
-
-footer small {
-  margin-left: 20%;
-}
-
 /* --- Estilos para quando o usuário for ADMIN  --- */
 #form_button_admin {
   background-color: #000;
