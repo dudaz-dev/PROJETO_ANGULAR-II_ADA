@@ -1,0 +1,256 @@
+main{
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  width: 100%;
+  height: 90vh;
+
+  background-color: #cecece;  
+}
+
+.history{
+  min-height: 90%;
+  min-width: 90%;
+  border-radius: 10px;
+  margin: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+
+  background-color: #fff;
+}
+
+.navHistory {
+  display: flex;
+  align-items: center;
+
+  padding: 48px 0 0 48px;
+  margin: 24px;
+  gap: 24px;
+}
+
+.navHistory .text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;  
+  gap: 24px;
+}
+
+.navHistory h2{
+  margin-top: 5px;
+  font-size: 1.5rem;
+}
+
+.history .navHistory button{
+  display: flex;
+
+  font-size: 1.5rem;
+  color: #333;
+
+  margin-left: 24px;
+  padding: 30px 10px;
+  border-radius: 50px;
+  width: 300px;
+}
+
+.history .navHistory button img{
+  margin-left: 150px;
+  color: #333;
+}
+
+.containerTag {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 600px;
+  margin: 24px;
+  padding: 48px 0 0 48px;
+  
+  gap: 24px;
+  overflow-y: auto;
+}
+
+.rowTag{
+  flex: 1 1 calc(50% - 24px); 
+  box-sizing: border-box; 
+  margin-bottom: 16px;  
+}
+
+.example-card {
+  width: 600px;
+  border: 2px solid #000; 
+  border-radius: 10px; 
+  background-color: #fff; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  gap: 25px;
+}
+
+mat-card-header {
+  margin-bottom: 16px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.header-title {
+  font-size: 1.3rem; 
+}
+
+
+.header-subtitle {
+  font-size: 1rem;
+  color:#666;
+}
+
+.hospital-address {
+  color: #000000;
+  font-size: 1rem;
+  text-align: end;
+}
+
+.body-content {
+  margin: 8px;
+}
+
+.patient-info {
+  font-size: 1rem;
+  color: #000000;
+  text-align: end;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem; 
+  margin: 0 36px; 
+}
+
+#addCardButton {
+  cursor: pointer;
+
+  display: flex;
+
+  font-size: 1.5rem;
+  color: #333;
+
+  margin-left: 24px;
+  padding: 30px 10px;
+  border-radius: 50px;
+  width: 300px;
+}
+
+#addCardButton:hover {
+  background-color: #073010;
+  color: #fff;
+}
+
+
+@media (max-width: 800px) {
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+
+  .history{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+  }
+
+  .navHistory{
+    display: flex;
+    flex-direction: column;  
+    
+    padding: 16px 0 0 16px;
+    margin: 16px;
+    gap: 16px;
+  }
+
+  .navHistory .text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .navHistory .text img{
+    height: 2.5rem;
+  }
+
+  .navHistory .text h2{
+    margin-left: 16px;
+    font-size: 1rem;
+  }
+
+  .history .navHistory  button{
+    display: flex;
+  
+    font-size: 1rem;
+    color: #333;    
+    
+    padding: 10px;
+    border-radius: 20px;
+    width: 230px;
+  }
+  
+  .history .navHistory button img{
+    color: #333;
+    margin-left: 130px;
+  }
+
+  .containerTag{
+    max-height: 400px;
+    padding: 10px;    
+    margin: 10px;
+  }
+
+  .rowTag{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .example-card { 
+    width: 250px;
+    border: 2px solid #000; 
+    border-radius: 10px; 
+    background-color: #fff; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  mat-card-header {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-items: left;
+  }
+
+  .alinhar{
+    padding-left: 22px;
+  }
+
+  .patient-info {
+    text-align: start;
+  }
+  
+  .spacer {
+    display: none;
+  }
+  
+  .hospital-address {
+    display: none;
+  }
+
+  .footer-content{
+    display: flex;
+    flex-direction:column;
+    justify-items: left;
+    padding-bottom: 20px;
+  }
+}

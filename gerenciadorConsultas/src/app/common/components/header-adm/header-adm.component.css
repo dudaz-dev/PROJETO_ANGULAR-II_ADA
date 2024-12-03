@@ -1,7 +1,7 @@
 mat-toolbar{
   height: 80px;
   color: #fff;
-  background-color: #029743;
+  background-color: #000;
 
   display: flex;
   justify-content: space-between;
@@ -12,7 +12,6 @@ mat-toolbar{
 .image{
   height: 100%;
   padding: 0 24px;
-  color: #fff;
 }
 
 .buttonHeader img{

@@ -1,0 +1,48 @@
+<app-header-adm></app-header-adm>
+
+<main>
+
+  <section class="history">
+    <div class="navHistory">
+      <div class="text">
+        <img src="../../../../../assets/img/VectorHistoryComponent.svg" alt="history">
+      
+        <h2>Lista de paciêntes atendidos</h2>  
+      </div>          
+      
+      <button mat-raised-button class="addFilter">
+        Data
+        <img src="../../../../../assets/img/VectorDataComponent.svg" alt="Date">        
+      </button>    
+      
+      <button mat-raised-button id="addCardButton" (click)="addCard()">Adicionar Card, teste sem api </button>
+    </div>
+
+    <div class="containerTag">
+      
+      <div class="rowTag" *ngFor="let card of cardsAdm">
+        <mat-card class="example-card" appearance="outlined">
+          <mat-card-header>
+            <mat-card-content class="alinhar">
+              <mat-card-title class="header-title">{{ card.title }}</mat-card-title>
+              <mat-card-subtitle class="header-subtitle">{{ card.subtitle }}</mat-card-subtitle>
+            </mat-card-content>
+            <span class="spacer"></span>
+            <mat-card-content class="body-content">
+              <mat-card-subtitle class="patient-info">{{ card.info }}</mat-card-subtitle>
+              <mat-card-subtitle class="hospital-address">{{ card.address }}</mat-card-subtitle>
+            </mat-card-content>
+          </mat-card-header>
+          <mat-card-footer class="footer-content">
+            <p class="date">{{ card.date }}</p>
+            <p class="time">{{ card.time }}</p>
+          </mat-card-footer>
+        </mat-card>
+      
+    </div>      
+  </div>
+  </section>
+
+</main>
+
+<app-footer></app-footer>

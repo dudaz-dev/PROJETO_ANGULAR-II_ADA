@@ -4,10 +4,10 @@ import { LoginComponent } from './modules/auth/components/login/login.component'
 import { RegisterComponent } from './modules/auth/components/register/register.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
 import { RecoveryComponent } from './modules/auth/components/recovery/recovery.component';
-import { AplicationComponent } from './modules/aplication/aplication.component';
-import { UserHistoryComponent } from './modules/aplication/user/user-history/user-history.component';
-import { AdmHistoryComponent } from './modules/aplication/adm/adm-history/adm-history.component';
-import { MedicalRegistrationComponent } from './modules/aplication/adm/medical-registration/medical-registration.component';
+import { AplicationComponent } from './modules/aplicacao/aplicacao.component';
+import { UserHistoryComponent } from './modules/aplicacao/user/user-history/user-history.component';
+import { AdmHistoryComponent } from './modules/aplicacao/adm/adm-history/adm-history.component'; 
+import { MedicalRegistrationComponent } from './modules/aplicacao/adm/medical-registration/medical-registration.component'; 
 
 export const routes: Routes = [
 
