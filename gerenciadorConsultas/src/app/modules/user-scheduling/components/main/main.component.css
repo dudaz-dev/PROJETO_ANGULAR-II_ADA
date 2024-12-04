@@ -1,0 +1,86 @@
+.banner1{
+  display: flex;  
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;  
+  
+  height: 690px;
+
+  background-image: url('../../../../../assets/img/banner1.svg'); 
+  background-size: cover;
+  background-position: center;
+}
+
+.textBanner1{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-left: 128px;
+  color: #fff;
+}
+
+.banner1 h1{
+  font-size: 3.75rem; 
+  font-weight: 700; 
+  line-height: 80px; 
+}
+
+.banner1 p {
+  font-size: 1.5rem;
+  line-height: 36px;
+}
+
+.textBanner1 button{
+  background-color: #029743;
+  max-width: 250px;
+  padding: 25px 45px ;
+  font-size: 1.125rem;
+  color: #fff;
+}
+
+.banner2{
+  display: flex;  
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;  
+  
+  height: 200px;
+
+  background-image: url('../../../../../assets/img/sobre\ nós.svg'); 
+  background-repeat: repeat-x;
+  background-position: start center;
+
+}
+
+.banner3{
+  display: flex;  
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;  
+  
+  height: 690px;
+
+  background-image: url('../../../../../assets/img/banner2.svg'); 
+  background-size: cover;
+  background-position: center;
+}
+
+.textBanner3{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-left: 128px;
+  color: #000;
+}
+
+.banner3 h2 {
+  font-size: 1.5rem;  
+}
+
+.banner3 h3 {
+  font-size: 2.25rem;
+}
+
+.banner3 p {
+  font-size: 1.5rem;
+}
