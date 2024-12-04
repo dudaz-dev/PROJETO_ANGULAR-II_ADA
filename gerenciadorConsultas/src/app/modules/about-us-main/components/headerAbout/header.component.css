@@ -39,3 +39,8 @@ mat-toolbar{
   font-size: 1rem;
 }
 
+img:hover{
+  cursor: pointer;
+}
+
+
