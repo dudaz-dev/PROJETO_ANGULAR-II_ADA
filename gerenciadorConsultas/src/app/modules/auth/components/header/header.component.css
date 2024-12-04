@@ -9,8 +9,11 @@
   background-color: transparent;
 
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
+
+  transition: background-image 1s ease, color 1s ease;
 }
 
 .header_buttons {
@@ -28,6 +31,7 @@
 
 .btn_user_green {
   color: #029743;
+  transition: background-color 1s ease, color 1s ease;
 }
 
 .btn_admin_white {
@@ -36,6 +40,7 @@
 
 #btn_admin_background {
   background-color: #8b8b8b;
+  transition: color 1s ease;
 }
 
 #login_icon {
@@ -49,8 +54,10 @@
 /* --- Estilos para quando o usuário for ADMIN  --- */
 .header_admin {
   background-image: url(../../../../../assets/img/header-black.png);
+  transition: background-image 1s ease, color 1s ease;
 }
 
 .btn_user_black {
   color: #000;
+  transition: color 2s ease;
 }

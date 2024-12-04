@@ -40,6 +40,13 @@ import { HeaderComponent } from '../header/header.component';
 })
 export class LoginComponent {
 
+  currentRole: string = 'USER';
+
+  onRoleChange(newRole: string) {
+    this.currentRole = newRole;
+    console.log(`Papel alterado para: ${newRole}`);
+  }
+
   users = [
     { name: '', image: 'assets/user1.png' },
     { name: '', image: 'assets/user2.png' },

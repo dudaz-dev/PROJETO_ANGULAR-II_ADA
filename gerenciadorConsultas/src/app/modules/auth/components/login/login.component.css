@@ -1,6 +1,8 @@
-main{
-    width: 100vw;
-    height: 100vh;
+main {
+  margin: 0 !important;
+  width: 100vw;
+  height: 100vh;
+  background-color: #d1ffe6;
 }
 
 .container {
@@ -8,7 +10,6 @@ main{
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  background-color: #d1ffe6;
   padding: 20px;
   font-family: Arial, sans-serif;
 }
@@ -29,7 +30,7 @@ main{
     }
 
     h1 {
-      color: #019645;
+      color: #029743;
       font-size: 24px;
       margin: 0;
     }
@@ -43,7 +44,7 @@ main{
 
   .card {
     background-color: #ffffff;
-    border: 2px solid #019645;
+    border: 2px solid #029743;
     border-radius: 8px;
     text-align: center;
     padding: 10px;
@@ -69,23 +70,23 @@ main{
   border-radius: 16px;
   padding: 30px;
   box-shadow: -6px 0px 6px rgb(0 0 0 / 18%);
-  width: 500px;
+  width: 600px;
 
   h2 {
     margin: 0 0 10px;
     color: #333;
   }
 
-  .header-login-section{
+  .header-login-section {
     display: flex;
+    width: 100%;
+    margin-bottom: 35px;
   }
 
   .header-bg{
-    background-image: url('../../../../../assets/img/header-green.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
+    right: 0;
     top: 0;
+    position: absolute;
     width: 100%;
   }
 
@@ -109,7 +110,7 @@ main{
     }
 
     .btn {
-      background-color: #019645;
+      background-color: #029743;
       color: #fff;
       border: none;
       padding: 10px;

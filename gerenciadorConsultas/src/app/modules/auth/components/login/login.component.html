@@ -13,8 +13,8 @@
     </div>
 
     <div class="login-section">
-        <div class="header-login-section header-bg">
-            <app-header></app-header>
+        <div class="header-login-section">
+            <app-header class="header-bg" [currentRole]="currentRole" (roleChange)="onRoleChange($event)"></app-header>
         </div>
         <p>Bem-vindo de volta</p>
         <h2>Faça login na sua conta</h2>
