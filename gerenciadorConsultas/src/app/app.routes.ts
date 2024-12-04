@@ -34,6 +34,16 @@ export const routes: Routes = [
     component: RecoveryComponent,
   },
   {
+    /* MOLDE ÁPOS ALTENTICAÇÃO DE LOGIN SER UTILIZADA:
+    {
+    path: 'aplication',
+    loadChildren: () =>
+      import('./modules/aplicacao/aplicacao.routes').then(
+        (r) => r.ALICATION_ROUTES
+      ),
+  },  
+    
+  */
     path:'aplication',
     children: [
       {
@@ -63,9 +73,7 @@ export const routes: Routes = [
 
         ]
       }
-    ]
-
-    
+    ]    
   },
   {
     path:'**',
