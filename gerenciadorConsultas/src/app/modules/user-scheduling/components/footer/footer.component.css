@@ -1,0 +1,29 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.footer {
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+
+  background-color: #ffffff;
+  color: #000;
+
+  height: 80px;
+  font-size: 1rem;
+  padding: 0 16px;
+}
+
+
+.imageFooter img {
+  max-height: 100%; 
+  margin-left: 24px;
+}
+
+.footer-link {
+  text-decoration: none; 
+  font-weight: 700;
+  font-weight: bold;
+  color: inherit; 
+}
