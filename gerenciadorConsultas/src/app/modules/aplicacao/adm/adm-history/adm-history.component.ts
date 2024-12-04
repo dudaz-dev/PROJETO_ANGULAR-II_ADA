@@ -1,21 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
 import { HeaderADMComponent } from '../../../../common/components/header-adm/header-adm.component'; 
 import { FooterComponent } from '../../../../common/components/footer/footer.component';
-import { MatToolbarModule } from '@angular/material/toolbar'
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatButton, MatButtonConfig, MatButtonModule } from '@angular/material/button'
-import {MatCardModule} from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { HistoryServiceService } from '../../../auth/services/history.service.service'; 
+import { History } from '../../../auth/models/history.model'; 
 
 @Component({
   selector: 'app-adm-history',
   standalone: true,
-  imports: [CommonModule,MatToolbarModule, MatIconModule, MatButtonModule,HeaderADMComponent,FooterComponent, MatButton,MatCardModule,],
+  imports: [
+    CommonModule, 
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    HeaderADMComponent,
+    FooterComponent,
+    MatCardModule,],
   templateUrl: './adm-history.component.html',
   styleUrl: './adm-history.component.css'
 })
 export class AdmHistoryComponent {
-  cardsAdm = [
+ /* cardsAdm = [
     {
       title: 'Consulta',
       subtitle: 'Paciente João',
@@ -24,17 +33,29 @@ export class AdmHistoryComponent {
       date: 'Seg., 25 de dez. de 2024',
       time: '11:30 h',
     },
-  ];
+  ];*/
+  cardsAdm: History[] = []; // Dados recebidos da API
+  isLoading = true;      // Para indicar carregamento
+  errorMessage = '';
 
-  addCard() {
-    this.cardsAdm.push({
-      title: 'Novo Card',
-      subtitle: 'Informação Adicional',
-      info: 'Novo Local',
-      address: 'Endereço Adicional',
-      date: 'Data',
-      time: 'Hora',
-    });
+  constructor(private historyService: HistoryServiceService) {}
+
+  ngOnInit(): void {
+    this.loadAppointments();
   }
+
+  loadAppointments(): void {
+    this.historyService.getAppointments().subscribe({
+      next: (data) => {
+        this.cardsAdm = data;
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.errorMessage = 'Não possui histórico de consultas.';
+        this.isLoading = false;
+        console.error(err);
+      },
+    });
+  } 
 
 }

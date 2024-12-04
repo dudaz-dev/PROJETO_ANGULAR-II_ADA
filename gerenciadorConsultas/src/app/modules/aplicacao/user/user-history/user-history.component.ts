@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
 import { HeaderComponent } from '../../../../common/components/header/header.component';
 import { FooterComponent } from '../../../../common/components/footer/footer.component';
@@ -6,6 +6,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { HistoryServiceService } from '../../../auth/services/history.service.service'; 
+import { History } from '../../../auth/models/history.model'; 
 
 @Component({
   selector: 'app-user-history',
@@ -23,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
   styleUrls: ['./user-history.component.css'],
 })
 export class UserHistoryComponent {
+  /*
   cards = [
     {
       title: 'Consulta',
@@ -32,16 +35,28 @@ export class UserHistoryComponent {
       date: 'Seg., 25 de dez. de 2024',
       time: '11:30 h',
     },
-  ];
+  ];*/
+  cards: History[] = []; // Dados recebidos da API
+  isLoading = true;      // Para indicar carregamento
+  errorMessage = '';
 
-  addCard() {
-    this.cards.push({
-      title: 'Novo Card',
-      subtitle: 'Informação Adicional',
-      info: 'Novo Local',
-      address: 'Endereço Adicional',
-      date: 'Data',
-      time: 'Hora',
-    });
+  constructor(private historyService: HistoryServiceService) {}
+
+  ngOnInit(): void {
+    this.loadAppointments();
   }
+
+  loadAppointments(): void {
+    this.historyService.getAppointments().subscribe({
+      next: (data) => {
+        this.cards = data;
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.errorMessage = 'Não possui histórico de consultas.';
+        this.isLoading = false;
+        console.error(err);
+      },
+    });
+  } 
 }
