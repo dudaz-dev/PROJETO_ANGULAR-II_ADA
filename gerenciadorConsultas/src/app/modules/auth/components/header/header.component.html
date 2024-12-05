@@ -1,0 +1,38 @@
+<header
+  [ngClass]="{
+    header_user: currentRole === 'USER',
+    header_admin: currentRole === 'ADMIN'
+  }"
+>
+  <div class="header_buttons">
+    <button mat-raised-button (click)="changeRole('USER')">
+      <mat-icon
+        [ngClass]="{
+          btn_user_green: currentRole === 'USER',
+          btn_user_black: currentRole === 'ADMIN'
+        }"
+        >person</mat-icon
+      >
+      <span
+        [ngClass]="{
+          btn_user_green: currentRole === 'USER',
+          btn_user_black: currentRole === 'ADMIN'
+        }"
+        >USUÁRIO</span
+      >
+    </button>
+
+    <button
+      mat-raised-button
+      id="btn_admin_background"
+      (click)="changeRole('ADMIN')"
+    >
+      <mat-icon class="btn_admin_white">person</mat-icon>
+      <span class="btn_admin_white">COOPERADOR</span>
+    </button>
+  </div>
+
+  <a routerLink="/login">
+    <mat-icon id="login_icon">login</mat-icon>
+  </a>
+</header>

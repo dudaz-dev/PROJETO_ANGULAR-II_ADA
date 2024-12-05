@@ -1,0 +1,27 @@
+mat-toolbar{
+  height: 80px;
+  color: #fff;
+  background-color: #000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.image{
+  height: 100%;
+  padding: 0 24px;
+}
+
+.buttonHeader img{
+  padding: 0 24px;
+  margin-left: 44px;
+}
+
+.buttonHeader img:hover{
+  background-color: #00000050;
+  border-radius: 2px;
+  cursor: pointer;
+}
+

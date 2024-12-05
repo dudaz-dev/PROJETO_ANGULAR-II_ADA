@@ -12,6 +12,7 @@ mat-toolbar{
 .image{
   height: 100%;
   padding: 0 24px;
+  color: #fff;
 }
 
 .buttonHeader img{
@@ -22,6 +23,9 @@ mat-toolbar{
 .buttonHeader img:hover{
   background-color: #00000050;
   border-radius: 2px;
+}
+
+img:hover{
   cursor: pointer;
 }
 

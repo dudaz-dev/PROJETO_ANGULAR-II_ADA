@@ -4,6 +4,9 @@ import { LoginComponent } from './modules/auth/components/login/login.component'
 import { RegisterComponent } from './modules/auth/components/register/register.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
 import { RecoveryComponent } from './modules/auth/components/recovery/recovery.component';
+import { UserHistoryComponent } from './modules/aplicacao/user/user-history/user-history.component';
+import { AdmHistoryComponent } from './modules/aplicacao/adm/adm-history/adm-history.component'; 
+import { MedicalRegistrationComponent } from './modules/aplicacao/adm/medical-registration/medical-registration.component'; 
 import { AplicacaoComponent } from './modules/aplicacao/aplicacao.component';
 
 export const routes: Routes = [
@@ -33,6 +36,48 @@ export const routes: Routes = [
   {
     path:'recovery',
     component: RecoveryComponent,
+  },
+  {
+    /* MOLDE ÁPOS ALTENTICAÇÃO DE LOGIN SER UTILIZADA:
+    {
+    path: 'aplication',
+    loadChildren: () =>
+      import('./modules/aplicacao/aplicacao.routes').then(
+        (r) => r.ALICATION_ROUTES
+      ),
+  },  
+    
+  */
+    path:'aplication',
+    children: [
+      {
+        path: '',
+        component: AplicationComponent,
+      },   
+      {
+        path: 'user',
+        children: [
+         { 
+          path:'history',
+          component: UserHistoryComponent,
+        }
+        ]
+      },
+      {
+        path:'adm',
+        children:[
+          {
+            path: 'history',
+            component: AdmHistoryComponent,
+          },
+          {
+            path: 'medical-registration',
+            component: MedicalRegistrationComponent,
+          }
+
+        ]
+      }
+    ]    
   },
   {
     path:'**',

@@ -1,38 +1,55 @@
 <app-header></app-header>
 
 <div class="containerDiv">
+  <div class="text">
+    <h2 class="my-4">Recuperação de Senha</h2>
+    <p>Para você recuperar a sua senha, digite o seu e-mail de usuário cadastrado no sistema. Uma mensagem será enviada solicitando a confirmação de recuperação da sua senha.</p>
+    
+    <form [formGroup]="form">
+      <fieldset>
+        <legend>E-mail da sua conta</legend>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Digite aqui seu e-mail...</mat-label>
+            <input matInput formControlName="email" />
+            <mat-error *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
+              Insira um e-mail válido
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </fieldset>
+    </form>
+
+    <section class="buttons">
+      <div>
+        <button mat-raised-button (click)="onConfirm()" class="confirm" [disabled]="!form.valid">
+          Confirmar
+        </button>
+      </div>
+      <div>
+        <button mat-raised-button (click)="openCancelConfirmation()" class="cancel" >
+          Cancelar
+        </button>
+      </div>
+    </section>
+  </div> 
+    <!-- Modal de botão Cancel -->
+  <span *ngIf="showCancelConfirmation" class="confirmation-modal">
+      <p>Deseja voltar para a página principal?</p>
+      <div class="alignButton">
+        <button mat-raised-button class="confirmSpan" (click)="confirmNavigation()">Sim</button>
+        <button mat-raised-button class="cancelSpan" (click)="closeCancelConfirmation()">Não</button>
+      </div>    
+  </span>  
   
-    <div class="text">
-        <h2 class="my-4">Recuperação de Senha</h2>
-        <p>Para você recuperar a sua senha, digite o seu e-mail de usuário cadastrado no sistema. Uma mensagem será enviada solicitando a confirmação de recuperação da sua senha.</p>
-        
-        <form>
-          <fieldset>
-            <legend>E-mail da sua conta</legend>
-            <div>
-              <mat-form-field appearance="outline">
-                <mat-label>Digite aqui seu e-mail...</mat-label>
-                <input matInput formControlName="email" />
-              </mat-form-field>
-            </div>
-          </fieldset>          
-        </form>
+  <span class="confirmation-message" *ngIf="showConfirmationMessage">
 
-        <section class="buttons">
-          <div>
-            <button mat-raised-button routerLink="" class="confirm ">
-              Confirmar
-            </button>
-          </div>
+    <p>O e-mail foi enviado com sucesso! Redirecionando para a página principal...</p>
+    <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
 
-          <div>
-            <button mat-raised-button routerLink="" class="cancel ">
-              Cancelar
-            </button>
-          </div>
-        </section>
-      
-    </div>  
+  </span>
+  
 </div>
 
 <app-footer></app-footer>
+
