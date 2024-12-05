@@ -91,6 +91,7 @@ button:not([disabled]):hover {
   font-size: 1.5rem;
   font-style: italic;
   text-align: center;
+  color: #000;
 }
 
 .alignButton{
