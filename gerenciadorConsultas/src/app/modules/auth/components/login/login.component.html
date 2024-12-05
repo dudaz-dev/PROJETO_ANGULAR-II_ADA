@@ -1,1 +1,61 @@
-<p>login works!</p>
+<main class="container-login" [ngClass]="{ 'admin-black-mode': currentRole === 'ADMIN' }">
+    <div class="banner-section">
+        <div class="logo-section">
+            <div class="logo-img-login" *ngIf="currentRole === 'USER'">
+                <img src="../../../../../assets/img/logo4.svg" alt="Medic Exam Logo" class="logo" />
+            </div>
+            <div class="logo-img-login" *ngIf="currentRole === 'ADMIN'">
+                <img src="../../../../../assets/img/logo-admin.svg" alt="Medic Exam Logo" class="logo" />
+            </div>
+        </div>
+
+        <div class="cards-section">
+            <div class="card-person-login" *ngIf="currentRole === 'USER'">
+                <img src="../../../../../assets/img/user-photo-cards.svg" alt="User Avatar" class="avatar" />
+            </div>
+            <div class="card-person-login" *ngIf="currentRole === 'ADMIN'">
+                <img src="../../../../../assets/img/admin-photo-cards.svg" alt="Admin Avatar" class="avatar" />
+            </div>
+        </div>
+    </div>
+
+    <div class="login-section">
+        <div class="header-login-section">
+            <app-header class="header-bg" [currentRole]="currentRole" (roleChange)="onRoleChange($event)"></app-header>
+        </div>
+
+        <div class="container-text-faca-seu-login">
+            <p>Bem-vindo de volta</p>
+            <h2>Faça login na sua conta</h2>
+        </div>
+
+        <form class="form-login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="w-70">
+                    <mat-label>Login</mat-label>
+                    <input matInput id="login" formControlName="login" placeholder="Marco Polo" class="w-70" />
+                    <mat-error *ngIf="login?.hasError('required')">Login é obrigatório.</mat-error>
+                    <mat-error *ngIf="login?.hasError('minlength')">Login deve ter pelo menos 3 caracteres.</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="outline" class="w-70">
+                    <mat-label>Senha</mat-label>
+                    <input matInput id="senha" type="password" formControlName="senha" placeholder="********" class="w-70" />
+                    <mat-error *ngIf="senha?.hasError('required')">Senha é obrigatória.</mat-error>
+                    <mat-error *ngIf="senha?.hasError('minlength')">Senha deve ter pelo menos 6 caracteres.</mat-error>
+                </mat-form-field>
+            </div>
+            <button type="submit" class="btn w-70" [ngClass]="{ 'admin-black-mode': currentRole === 'ADMIN' }" [disabled]="loginForm.invalid">Entrar</button>
+        </form>
+
+        <div class="container-register-and-recovery">
+            <a class="routerlink-from-login" [routerLink]="['/register']" routerLinkActive="router-link-active">Registrar</a>
+            <a class="routerlink-from-login" [routerLink]="['/recovery']" routerLinkActive="router-link-active">Esqueci minha senha</a>
+        </div>
+
+        <footer class="footer-login">
+            <small>&copy;Desenvolvido por Equipe 02</small>
+        </footer>
+    </div>
+</main>
