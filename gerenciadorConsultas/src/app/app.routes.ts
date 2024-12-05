@@ -8,12 +8,13 @@ import { UserHistoryComponent } from './modules/aplicacao/user/user-history/user
 import { AdmHistoryComponent } from './modules/aplicacao/adm/adm-history/adm-history.component'; 
 import { MedicalRegistrationComponent } from './modules/aplicacao/adm/medical-registration/medical-registration.component'; 
 import { AplicacaoComponent } from './modules/aplicacao/aplicacao.component';
+import { AplicacaoADMComponent } from './modules/aplicacao/adm/aplicacao-adm/aplicacao-adm.component';
 
 export const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'dashboardAdm',
     pathMatch: 'full',
   }, 
   {
@@ -32,6 +33,10 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: AplicacaoComponent,
+  },
+  {
+    path: 'dashboardAdm',
+    component: AplicacaoADMComponent,
   },
   {
     path:'recovery',
