@@ -1,0 +1,7 @@
+<span *ngIf="isVisible | async" class="confirmation-modal">
+  <p>{{ message }}</p>
+
+  <button mat-raised-button class="confirmSpan" (click)="spamService.close()">
+    OK
+  </button>
+</span>

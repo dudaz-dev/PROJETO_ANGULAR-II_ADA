@@ -19,6 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { NgxMaskDirective } from 'ngx-mask';
 import { FooterComponent } from '../../../../common/components/footer/footer.component';
+import { SpamService } from '../../../../common/services/spam.service';
 import { AuthService } from '../../services/auth.service';
 import { ViaCepService } from '../../services/via-cep.service';
 import { HeaderComponent } from '../header/header.component';
@@ -76,7 +77,8 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private viaCepService: ViaCepService,
     private router: Router,
-    private destroyRef: DestroyRef
+    private destroyRef: DestroyRef,
+    private spamService: SpamService
   ) {}
 
   ngOnInit(): void {
@@ -95,7 +97,7 @@ export class RegisterComponent implements OnInit {
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         complete: () => {
-          console.log('Usuário cadastrado!');
+          this.spamService.openSpam('Cadastro realizado com sucesso!');
           this.router.navigate(['/login']);
         },
         error: (err) => {
