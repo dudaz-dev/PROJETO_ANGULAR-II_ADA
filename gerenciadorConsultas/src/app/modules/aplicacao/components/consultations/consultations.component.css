@@ -1,0 +1,77 @@
+/* Estilo geral para o container das consultas */
+.consultations-list {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+/* Título das consultas */
+.consultations-list h2 {
+  font-size: 22px;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Estilo para o container de cada consulta */
+.consultation-container {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 20px;
+}
+
+/* Estilo para cada item de consulta */
+.consultation-item {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Efeito de hover para destacar o item */
+.consultation-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo do cabeçalho da consulta (especialidade e médico) */
+.consultation-header {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.consultation-header h3 {
+  font-size: 18px;
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.consultation-header p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Corpo da consulta (data, horário e observação) */
+.consultation-body p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Rodapé da consulta (status) */
+.consultation-footer p {
+  font-size: 14px;
+  font-weight: 500;
+  color: #888;
+}
+
+/* Seção de "Status" com cor diferenciada */
+.consultation-footer p strong {
+  color: #333;
+}

@@ -1,0 +1,18 @@
+<div class="consultations-list">
+  <div class="consultation-container">
+    <div *ngFor="let appointment of appointments" class="consultation-item">
+      <div class="consultation-header">
+        <h3>{{ appointment.specialty }}</h3>
+        <p>{{ appointment.doctor }}</p>
+      </div>
+      <div class="consultation-body">
+        <p><strong>Data:</strong> {{ appointment.date }}</p>
+        <p><strong>Horário:</strong> {{ appointment.time }}</p>
+        <p><strong>Observação:</strong> {{ appointment.obs }}</p>
+      </div>
+      <div class="consultation-footer">
+        <p><strong>Status:</strong> {{ appointment.status }}</p>
+      </div>
+    </div>
+  </div>
+</div>
