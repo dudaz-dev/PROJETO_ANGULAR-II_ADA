@@ -1,0 +1,39 @@
+.confirmation-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  max-width: 500px;
+  min-height: 350px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+  gap: 20px;
+
+  background-color: #ffffff;
+  padding: 70px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.5);
+
+  font-size: 1.5rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.confirmation-modal p {
+  color: #000;
+}
+
+.confirmation-modal button {
+  margin: 8px;
+  padding: 30px 50px;
+  font-size: 1.4rem;
+}
+
+.mat-mdc-raised-button:not(:disabled) {
+  color: #fff;
+  background-color: #00995d;
+  border-radius: 20px 20px 20px 20px;
+}

@@ -2,8 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center; 
-  height: 100vh;
+  height: 75vh;
   background: rgb(255, 255, 255);
+  margin-bottom: 200px;
 }
 
 .text {
@@ -14,12 +15,16 @@
   gap: 20px;
   max-width: 600px;
   border-radius: 8px;
-  text-align: 1.5rem;
   text-align: justify;
 }
 
 .text h2{
-  text-align: center;  
+  text-align: center; 
+  font-size: 2rem; 
+}
+
+.text p{
+  font-size: 1.25rem;
 }
 
 .buttons{
@@ -86,6 +91,7 @@ button:not([disabled]):hover {
   font-size: 1.5rem;
   font-style: italic;
   text-align: center;
+  color: #000;
 }
 
 .alignButton{
@@ -119,6 +125,14 @@ button:not([disabled]):hover {
     border-radius: 8px;
     text-align: 1rem;
     text-align: justify;
+  }
+
+  .text h2{
+    font-size: 1.5rem;
+  }
+
+  .text p{
+    font-size: 1rem;
   }
 
   .buttons{

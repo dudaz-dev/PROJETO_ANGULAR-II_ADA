@@ -1,4 +1,4 @@
-.banner1{
+.banner1,  .banner3{
   display: flex;  
   justify-content: center;
   align-items: flex-start;
@@ -6,12 +6,30 @@
   
   height: 690px;
 
-  background-image: url('../../../../../assets/img/banner1.svg'); 
   background-size: cover;
   background-position: center;
 }
 
-.textBanner1{
+.banner1{
+  background-image: url('../../../../../assets/img/banner1.svg'); 
+}
+
+.banner2{
+  display: flex;  
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;    
+  height: 200px;
+  background-image: url('../../../../../assets/img/sobre\ nós.svg'); 
+  background-repeat: repeat-x;
+  background-position: start center;
+}
+
+.banner3{
+  background-image: url('../../../../../assets/img/banner2.svg'); 
+}
+
+.textBanner1, .textBanner3{
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -19,15 +37,18 @@
   color: #fff;
 }
 
-.banner1 h1{
+.banner1 h2{
   font-size: 3.75rem; 
   font-weight: 700; 
-  line-height: 80px; 
+  line-height: 80px;
+  max-width: 500px; 
 }
 
 .banner1 p {
   font-size: 1.5rem;
   line-height: 36px;
+  max-width: 450px;
+  text-align: justify;
 }
 
 .textBanner1 button{
@@ -38,49 +59,80 @@
   color: #fff;
 }
 
-.banner2{
-  display: flex;  
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;  
-  
-  height: 200px;
-
-  background-image: url('../../../../../assets/img/sobre\ nós.svg'); 
-  background-repeat: repeat-x;
-  background-position: start center;
-
-}
-
-.banner3{
-  display: flex;  
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;  
-  
-  height: 690px;
-
-  background-image: url('../../../../../assets/img/banner2.svg'); 
-  background-size: cover;
-  background-position: center;
-}
-
 .textBanner3{
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin-left: 128px;
   color: #000;
 }
 
-.banner3 h2 {
+.banner3 h2, .banner3 p {
   font-size: 1.5rem;  
+  max-width: 450px;
+  text-align: justify;
 }
 
 .banner3 h3 {
   font-size: 2.25rem;
+  max-width: 500px;
 }
 
-.banner3 p {
-  font-size: 1.5rem;
+@media (max-width: 768px){
+  
+  .banner1{
+    height: 500px;    
+    background-image: url('../../../../../assets/img/banner1celuar.svg'); 
+  }
+
+  .banner2{    
+    height: 80px;  
+    background-image: url('../../../../../assets/img/banner2celular.svg'); 
+  }
+
+  .banner3{
+    height: 500px;
+    background-image: url('../../../../../assets/img/banner3celular.svg'); 
+  }
+  
+  .textBanner1,.textBanner3{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: start;
+    
+    border-radius: 10px;
+    height: 100vh;
+    padding: 16px;
+    margin: 16px;
+    gap: 10px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  .banner1 h2{
+    font-size: 2rem;     
+    font-weight: 700; 
+    line-height: 60px;
+  }
+  
+  .banner1 p, .banner3 p {
+    font-size: 1rem;
+    text-align: justify;
+  }
+
+  .textBanner3 h2{
+    font-size: 1rem;
+    display: flex;
+    text-align: start;
+  }
+
+  .textBanner3{
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+  
+  .banner3 h3 {
+    font-size: 1.5rem;
+    text-align: start;    
+  } 
+
 }

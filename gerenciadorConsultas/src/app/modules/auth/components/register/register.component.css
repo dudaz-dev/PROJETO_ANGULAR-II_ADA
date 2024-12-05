@@ -1,4 +1,3 @@
-/* Estilos para quando o role for USER */
 :host {
   height: 100%;
 }
@@ -15,7 +14,6 @@ main {
   width: 564px;
   padding: 0 16px;
   color: #000;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,15 +48,88 @@ h1 {
   opacity: 0.4;
 }
 
-/* --- Estilos para quando o usuário for ADMIN  --- */
 #form_button_admin {
   background-color: #000;
 }
 
-/* ------------------------ */
-@media (max-width: 768px) {
-  main {
-    flex-direction: column;
-    align-items: center;
+  @media (max-width: 768px) {
+    main {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 16px;
+      margin-bottom: 48px;
+    }
+
+    .img-fluid{
+      margin: 0 auto;
+      width: 70%;
+      padding: 16px 0 32px 0;
+    }
+    
+    .form_container {
+      width: 80%; 
+      margin: 0 auto; 
+    }
+
+    .form_container .d-flex {
+      gap: 8px; 
+      align-items: center;
+    }
+
+    .welcome { 
+      font-weight: 400;
+      margin-bottom: 8px; 
+    }
+
+    .form_container h1 {
+      font-size: 2rem;
+      margin: 8px 0; 
+    }
+
+    .row {
+      display: flex;
+      flex-direction: column; 
+      align-items: center;
+    }
+
+    .row .col-md-7,
+    .row .col-md-5,
+    .row .col-md-3,
+    .row .col-md-2,
+    .row .col-md-4,
+    .row .col-md-6,
+    .row .col-md-12 {
+      width: 80%; 
+      margin-bottom: 8px; 
+    }
+
+    mat-form-field {
+      width: 100%; 
+    }
+
+    @media (max-width: 550px) {
+    .form_container {
+      width: 100%; 
+    }
+
+    .row .col-md-7,
+    .row .col-md-5,
+    .row .col-md-3,
+    .row .col-md-2,
+    .row .col-md-4,
+    .row .col-md-6,
+    .row .col-md-12 {
+      width: 90%; 
+    }
+
+    @media (max-width: 370px) {
+      .welcome { 
+        font-size: 1.4rem; 
+      }
+    
+      .form_container h1 {
+        font-size: 1.7rem;
+      }
+    }
   }
 }

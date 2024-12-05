@@ -6,7 +6,7 @@ import { NotFoundComponent } from './common/not-found/not-found.component';
 import { RecoveryComponent } from './modules/auth/components/recovery/recovery.component';
 import { UserHistoryComponent } from './modules/aplicacao/user/user-history/user-history.component';
 import { AdmHistoryComponent } from './modules/aplicacao/adm/adm-history/adm-history.component'; 
-import { MedicalRegistrationComponent } from './modules/aplicacao/adm/medical-registration/medical-registration.component'; 
+ 
 import { AplicacaoComponent } from './modules/aplicacao/aplicacao.component';
 import { AplicacaoADMComponent } from './modules/aplicacao/adm/aplicacao-adm/aplicacao-adm.component';
 
@@ -74,11 +74,7 @@ export const routes: Routes = [
           {
             path: 'history',
             component: AdmHistoryComponent,
-          },
-          {
-            path: 'medical-registration',
-            component: MedicalRegistrationComponent,
-          }
+          },          
 
         ]
       }
