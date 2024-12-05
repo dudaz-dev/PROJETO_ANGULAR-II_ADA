@@ -29,16 +29,24 @@
             <h2>Faça login na sua conta</h2>
         </div>
 
-        <form class="form-login">
+        <form class="form-login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label for="login">Login</label>
-                <input id="login" type="text" placeholder="Marco Polo" />
+                <mat-form-field appearance="outline" class="w-70">
+                    <mat-label>Login</mat-label>
+                    <input matInput id="login" formControlName="login" placeholder="Marco Polo" class="w-70" />
+                    <mat-error *ngIf="login?.hasError('required')">Login é obrigatório.</mat-error>
+                    <mat-error *ngIf="login?.hasError('minlength')">Login deve ter pelo menos 3 caracteres.</mat-error>
+                </mat-form-field>
             </div>
             <div class="form-group">
-                <label for="senha">Senha</label>
-                <input id="senha" type="password" placeholder="********" />
+                <mat-form-field appearance="outline" class="w-70">
+                    <mat-label>Senha</mat-label>
+                    <input matInput id="senha" type="password" formControlName="senha" placeholder="********" class="w-70" />
+                    <mat-error *ngIf="senha?.hasError('required')">Senha é obrigatória.</mat-error>
+                    <mat-error *ngIf="senha?.hasError('minlength')">Senha deve ter pelo menos 6 caracteres.</mat-error>
+                </mat-form-field>
             </div>
-            <button type="submit" class="btn" [ngClass]="{ 'admin-black-mode': currentRole === 'ADMIN' }">Entrar</button>
+            <button type="submit" class="btn w-70" [ngClass]="{ 'admin-black-mode': currentRole === 'ADMIN' }" [disabled]="loginForm.invalid">Entrar</button>
         </form>
 
         <div class="container-register-and-recovery">
