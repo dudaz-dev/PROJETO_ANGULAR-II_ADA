@@ -7,7 +7,7 @@ import { RecoveryComponent } from './modules/auth/components/recovery/recovery.c
 import { AplicationComponent } from './modules/aplicacao/aplicacao.component';
 import { UserHistoryComponent } from './modules/aplicacao/user/user-history/user-history.component';
 import { AdmHistoryComponent } from './modules/aplicacao/adm/adm-history/adm-history.component'; 
-import { MedicalRegistrationComponent } from './modules/aplicacao/adm/medical-registration/medical-registration.component'; 
+ 
 
 export const routes: Routes = [
 
@@ -65,11 +65,7 @@ export const routes: Routes = [
           {
             path: 'history',
             component: AdmHistoryComponent,
-          },
-          {
-            path: 'medical-registration',
-            component: MedicalRegistrationComponent,
-          }
+          },          
 
         ]
       }

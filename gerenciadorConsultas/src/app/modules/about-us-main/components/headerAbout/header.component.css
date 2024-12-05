@@ -7,7 +7,6 @@ mat-toolbar{
   color: #fff;
   background-color: #029743;
   font-size: 1rem;
-
 }
 
 .image{
@@ -31,7 +30,7 @@ mat-toolbar{
 
 .buttonHeader{
   display: flex;
-  gap: 24px;    
+  gap: 16px;    
 }
 
 .buttonHeader button, mat-icon{
@@ -43,4 +42,34 @@ img:hover{
   cursor: pointer;
 }
 
+@media (max-width: 710px){
+  .about{
+    display: none;
+  }
 
+  .image{
+    padding: 0 16px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 490px){
+  mat-toolbar{
+    height: 120px;
+    color: #fff;
+    background-color: #029743;
+    font-size: 0.8rem;
+  }
+  
+.buttonHeader{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;    
+}
+
+.buttonHeader button{
+  color: #029743;
+  font-size: 0.8rem;
+}
+
+}

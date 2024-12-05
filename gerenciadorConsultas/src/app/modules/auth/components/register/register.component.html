@@ -10,7 +10,7 @@
   </div>
 
   <div class="form_container">
-    <div class="d-flex gap-3 flex-column">
+    <div class="d-flex gap-2 flex-column">
       <p class="welcome">
         Bem-vindo
         {{ roleValue === "USER" ? "novo cliente" : "Colaborador" }}
@@ -186,7 +186,7 @@
         <button
           [id]="roleValue === 'USER' ? 'form_button' : 'form_button_admin'"
           mat-raised-button
-          [disabled]="form.invalid"
+          [disabled]="form.invalid"          
         >
           Cadastrar
         </button>
