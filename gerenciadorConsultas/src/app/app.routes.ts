@@ -52,7 +52,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: AplicationComponent,
+        component: AplicacaoComponent,
       },   
       {
         path: 'user',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common'; 
-import { HeaderComponent } from '../../../../common/components/header/header.component';
+import { HeaderComponentPrivate } from '../../../../common/components/header/header.component';
 import { FooterComponent } from '../../../../common/components/footer/footer.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,7 +17,7 @@ import { History } from '../../../auth/models/history.model';
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    HeaderComponent,
+    HeaderComponentPrivate,
     FooterComponent,
     MatCardModule,
   ],

@@ -2,9 +2,9 @@
 
 /* Estilos gerais da página */
 .container {
-    background-color: #f5fdfb;
-    min-height: 100vh;
-    padding: 20px;
+  background-color: #e1feef;
+  width: 100%;
+  padding: 0; 
   
     .welcome {
       font-size: 1.5rem;

@@ -17,8 +17,8 @@
 
 /* Estilo para o container de cada consulta */
 .consultation-container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 2fr 2fr;
   gap: 20px;
 }
 
