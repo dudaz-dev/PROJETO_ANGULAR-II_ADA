@@ -33,7 +33,7 @@
             <div class="form-group">
                 <mat-form-field appearance="outline" class="w-70">
                     <mat-label>Login</mat-label>
-                    <input matInput id="login" formControlName="login" placeholder="Marco Polo" class="w-70" />
+                    <input matInput id="login" formControlName="email" placeholder="Marco Polo" class="w-70" />
                     <mat-error *ngIf="login?.hasError('required')">Login é obrigatório.</mat-error>
                     <mat-error *ngIf="login?.hasError('minlength')">Login deve ter pelo menos 3 caracteres.</mat-error>
                 </mat-form-field>
@@ -41,7 +41,7 @@
             <div class="form-group">
                 <mat-form-field appearance="outline" class="w-70">
                     <mat-label>Senha</mat-label>
-                    <input matInput id="senha" type="password" formControlName="senha" placeholder="********" class="w-70" />
+                    <input matInput id="senha" type="password" formControlName="password" placeholder="********" class="w-70" />
                     <mat-error *ngIf="senha?.hasError('required')">Senha é obrigatória.</mat-error>
                     <mat-error *ngIf="senha?.hasError('minlength')">Senha deve ter pelo menos 6 caracteres.</mat-error>
                 </mat-form-field>

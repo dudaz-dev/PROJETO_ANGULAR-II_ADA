@@ -37,11 +37,11 @@ export class LoginComponent {
   }
 
   loginForm: FormGroup = new FormGroup({
-    login: new FormControl(null, [
+    email: new FormControl(null, [
       Validators.required,
       Validators.minLength(3),
     ]),
-    senha: new FormControl(null, [
+    password: new FormControl(null, [
       Validators.required,
       Validators.minLength(6),
     ]),
@@ -67,9 +67,9 @@ export class LoginComponent {
           sessionStorage.setItem('USER_TOKEN', res.token);
           sessionStorage.setItem('USER_ROLE', res.user.role);
 
-          if (res.user.role === 'USER') {
-            this.router.navigate(['/aplication']);
-          }
+          if (res.user.role === 'USER') this.router.navigate(['/dashboard']);
+          if (res.user.role === 'ADMIN')
+            this.router.navigate(['/dashboardAdm']);
         },
         error: (err) => {
           console.error(err);
