@@ -12,7 +12,7 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common'; 
-import { HeaderComponent } from '../../../../common/components/header/header.component';
+import { HeaderComponentPrivate } from '../../../../common/components/header/header.component';
 import { FooterComponent } from '../../../../common/components/footer/footer.component';
 import { Router } from '@angular/router';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
@@ -29,7 +29,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    HeaderComponent,
+    HeaderComponentPrivate,
     FooterComponent,
     MatProgressBarModule,
   ],

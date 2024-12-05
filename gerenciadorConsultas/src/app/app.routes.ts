@@ -4,10 +4,11 @@ import { LoginComponent } from './modules/auth/components/login/login.component'
 import { RegisterComponent } from './modules/auth/components/register/register.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
 import { RecoveryComponent } from './modules/auth/components/recovery/recovery.component';
-import { AplicationComponent } from './modules/aplicacao/aplicacao.component';
 import { UserHistoryComponent } from './modules/aplicacao/user/user-history/user-history.component';
 import { AdmHistoryComponent } from './modules/aplicacao/adm/adm-history/adm-history.component'; 
  
+import { AplicacaoComponent } from './modules/aplicacao/aplicacao.component';
+import { AplicacaoADMComponent } from './modules/aplicacao/adm/aplicacao-adm/aplicacao-adm.component';
 
 export const routes: Routes = [
 
@@ -30,6 +31,14 @@ export const routes: Routes = [
     component: RegisterComponent,
   },
   {
+    path: 'dashboard',
+    component: AplicacaoComponent,
+  },
+  {
+    path: 'dashboardAdm',
+    component: AplicacaoADMComponent,
+  },
+  {
     path:'recovery',
     component: RecoveryComponent,
   },
@@ -48,7 +57,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: AplicationComponent,
+        component: AplicacaoComponent,
       },   
       {
         path: 'user',
