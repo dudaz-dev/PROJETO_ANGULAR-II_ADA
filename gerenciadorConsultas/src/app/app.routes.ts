@@ -20,7 +20,6 @@ export const routes: Routes = [
     path: 'about-us-main',
     component: AboutUsMainComponent,
   },
-  
   {
     path:'login',
     component: LoginComponent,
