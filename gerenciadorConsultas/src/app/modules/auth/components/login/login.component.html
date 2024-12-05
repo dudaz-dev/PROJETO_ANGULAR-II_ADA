@@ -1,13 +1,20 @@
-<main class="container">
+<main class="container-login" [ngClass]="{ 'admin-black-mode': currentRole === 'ADMIN' }">
     <div class="banner-section">
         <div class="logo-section">
-            <img src="../../../../../assets/img/logo4.svg" alt="Medic Exam Logo" class="logo" />
+            <div class="logo-img-login" *ngIf="currentRole === 'USER'">
+                <img src="../../../../../assets/img/logo4.svg" alt="Medic Exam Logo" class="logo" />
+            </div>
+            <div class="logo-img-login" *ngIf="currentRole === 'ADMIN'">
+                <img src="../../../../../assets/img/logo-admin.svg" alt="Medic Exam Logo" class="logo" />
+            </div>
         </div>
 
         <div class="cards-section">
-            <div class="card" *ngFor="let user of users">
-                <img [src]="user.image" alt="User Avatar" class="avatar" />
-                <p class="user-name">{{ user.name }}</p>
+            <div class="card-person-login" *ngIf="currentRole === 'USER'">
+                <img src="../../../../../assets/img/user-photo-cards.svg" alt="User Avatar" class="avatar" />
+            </div>
+            <div class="card-person-login" *ngIf="currentRole === 'ADMIN'">
+                <img src="../../../../../assets/img/admin-photo-cards.svg" alt="Admin Avatar" class="avatar" />
             </div>
         </div>
     </div>
@@ -16,9 +23,13 @@
         <div class="header-login-section">
             <app-header class="header-bg" [currentRole]="currentRole" (roleChange)="onRoleChange($event)"></app-header>
         </div>
-        <p>Bem-vindo de volta</p>
-        <h2>Faça login na sua conta</h2>
-        <form>
+
+        <div class="container-text-faca-seu-login">
+            <p>Bem-vindo de volta</p>
+            <h2>Faça login na sua conta</h2>
+        </div>
+
+        <form class="form-login">
             <div class="form-group">
                 <label for="login">Login</label>
                 <input id="login" type="text" placeholder="Marco Polo" />
@@ -27,9 +38,15 @@
                 <label for="senha">Senha</label>
                 <input id="senha" type="password" placeholder="********" />
             </div>
-            <button type="submit" class="btn">Entrar</button>
+            <button type="submit" class="btn" [ngClass]="{ 'admin-black-mode': currentRole === 'ADMIN' }">Entrar</button>
         </form>
-        <footer>
+
+        <div class="container-register-and-recovery">
+            <a class="routerlink-from-login" [routerLink]="['/register']" routerLinkActive="router-link-active">Registrar</a>
+            <a class="routerlink-from-login" [routerLink]="['/recovery']" routerLinkActive="router-link-active">Esqueci minha senha</a>
+        </div>
+
+        <footer class="footer-login">
             <small>&copy;Desenvolvido por Equipe 02</small>
         </footer>
     </div>

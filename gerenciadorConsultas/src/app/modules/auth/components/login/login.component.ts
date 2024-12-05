@@ -11,26 +11,14 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { Router } from '@angular/router';
-import { NgxMaskDirective } from 'ngx-mask';
-import { AuthService } from '../../services/auth.service';
-import { ViaCepService } from '../../services/via-cep.service';
+import { Router, RouterModule } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
-    MatFormFieldModule,
-    MatSelectModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
+    RouterModule,
     ReactiveFormsModule,
     CommonModule,
     HeaderComponent,
@@ -44,13 +32,6 @@ export class LoginComponent {
 
   onRoleChange(newRole: string) {
     this.currentRole = newRole;
-    console.log(`Papel alterado para: ${newRole}`);
   }
-
-  users = [
-    { name: '', image: 'assets/user1.png' },
-    { name: '', image: 'assets/user2.png' },
-    { name: '', image: 'assets/user3.png' }
-  ];
 
 }
