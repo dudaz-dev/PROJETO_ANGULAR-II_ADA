@@ -23,7 +23,13 @@ export class MenuComponent implements OnInit {
       this.router.navigate(['/adm-scheduling']);
     }
   }
-  timeValue() {
-    
+
+  onHistory(): void {
+    if (this.userRole === 'USER') {
+      this.router.navigate(['/aplication/user/history']); 
+    } else {
+      this.router.navigate(['/aplication/adm/history']); 
+    }
   }
 }
+
