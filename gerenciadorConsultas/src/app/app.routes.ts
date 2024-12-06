@@ -7,7 +7,8 @@ import { RecoveryComponent } from './modules/auth/components/recovery/recovery.c
 import { AplicationComponent } from './modules/aplicacao/aplicacao.component';
 import { UserHistoryComponent } from './modules/aplicacao/user/user-history/user-history.component';
 import { AdmHistoryComponent } from './modules/aplicacao/adm/adm-history/adm-history.component'; 
- 
+import { UserSchedulingComponent } from './modules/user-scheduling/user-scheduling.component';
+import { AdmSchedulingComponent } from './modules/adm-scheduling/adm-scheduling.component';
 
 export const routes: Routes = [
 
@@ -32,6 +33,14 @@ export const routes: Routes = [
   {
     path:'recovery',
     component: RecoveryComponent,
+  },
+  {
+    path: 'user-scheduling',
+    component: UserSchedulingComponent,
+  },
+  {
+    path: 'adm-scheduling',
+    component: AdmSchedulingComponent,
   },
   {
     /* MOLDE ÁPOS ALTENTICAÇÃO DE LOGIN SER UTILIZADA:
@@ -77,3 +86,4 @@ export const routes: Routes = [
   },
 
 ];
+
