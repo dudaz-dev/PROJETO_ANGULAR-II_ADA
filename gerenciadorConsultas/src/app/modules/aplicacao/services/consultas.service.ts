@@ -15,9 +15,10 @@ export class ConsultasService {
     return this.http.get<Appointments[]>(this.apiUrl);
   }
 
-  addConsulta(appointment: Appointments): Observable<void> {
-    return this.http.post<void>(this.apiUrl, appointment);
+  addConsulta(appointment: Appointments): Observable<Appointments> {
+    return this.http.post<Appointments>(this.apiUrl, appointment);
   }
+  
 
   getConsultaById(id: string): Observable<Appointments> {
     return this.http.get<Appointments>(`${this.apiUrl}/${id}`);

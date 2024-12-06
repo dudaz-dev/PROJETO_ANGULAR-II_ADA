@@ -2,11 +2,19 @@
   <!-- Navegação -->
   <nav class="navigation">
     <button class="nav-button active">
-      <img class="schedules-img" src="../../../../../assets/img/calendar.svg" alt="Agendamento ícone" />
-      Agendamento de Paciêntes
+      <img
+        class="schedules-img"
+        src="../../../../../assets/img/calendar.svg"
+        alt="Agendamento ícone"
+      />
+      Agendamento de Pacientes
     </button>
     <button class="nav-button">
-      <img class="schedules-img" src="../../../../../assets/img/register.svg" alt="Cadastrar Médico ícone" />
+      <img
+        class="schedules-img"
+        src="../../../../../assets/img/register.svg"
+        alt="Cadastrar Médico ícone"
+      />
       Cadastrar Médico
     </button>
   </nav>
@@ -14,14 +22,17 @@
   <div class="content">
     <!-- Lista de agendamentos -->
     <section class="appointments">
+      <h2>Consultas Agendadas</h2>
       <div class="appointments-list">
-
-        <div class="appointment-card">
+        <div
+          class="appointment-card"
+          *ngFor="let appointment of appointments"
+        >
           <div class="info" id="specialist">
-            <h3 class="expertise">Nutricionista</h3>
-            <p class="specialist-name">Dra. Ana Maria Braga</p>
-            <p class="exame" id="date">Seg., 25 de dez. de 2024</p>
-            <p class="exame" id="hour">11:30 h</p>
+            <h3 class="expertise">{{ appointment.specialty }}</h3>
+            <p class="specialist-name">{{ appointment.doctor }}</p>
+            <p class="exame" id="date">{{ appointment.date }}</p>
+            <p class="exame" id="hour">{{ appointment.time }}</p>
           </div>
           <div class="info">
             <p><strong>Hospital Ponta Negra</strong></p>
@@ -32,58 +43,6 @@
             </div>
           </div>
         </div>
-
-        <div class="appointment-card">
-          <div class="info" id="specialist">
-            <h3 class="expertise">Nutricionista</h3>
-            <p class="specialist-name">Dra. Ana Maria Braga</p>
-            <p class="exame" id="date">Seg., 25 de dez. de 2024</p>
-            <p class="exame" id="hour">11:30 h</p>
-          </div>
-          <div class="info">
-            <p><strong>Hospital Ponta Negra</strong></p>
-            <p>Av. Ayrton Senna, 34 - Capim Macio</p>
-            <div class="buttons">
-              <button class="reschedule-btn">Reagendar</button>
-              <button class="cancel-btn">Cancelar</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="appointment-card">
-          <div class="info" id="specialist">
-            <h3 class="expertise">Nutricionista</h3>
-            <p class="specialist-name">Dra. Ana Maria Braga</p>
-            <p class="exame" id="date">Seg., 25 de dez. de 2024</p>
-            <p class="exame" id="hour">11:30 h</p>
-          </div>
-          <div class="info">
-            <p><strong>Hospital Ponta Negra</strong></p>
-            <p>Av. Ayrton Senna, 34 - Capim Macio</p>
-            <div class="buttons">
-              <button class="reschedule-btn">Reagendar</button>
-              <button class="cancel-btn">Cancelar</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="appointment-card">
-          <div class="info" id="specialist">
-            <h3 class="expertise">Nutricionista</h3>
-            <p class="specialist-name">Dra. Ana Maria Braga</p>
-            <p class="exame" id="date">Seg., 25 de dez. de 2024</p>
-            <p class="exame" id="hour">11:30 h</p>
-          </div>
-          <div class="info">
-            <p><strong>Hospital Ponta Negra</strong></p>
-            <p>Av. Ayrton Senna, 34 - Capim Macio</p>
-            <div class="buttons">
-              <button class="reschedule-btn">Reagendar</button>
-              <button class="cancel-btn">Cancelar</button>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
@@ -91,39 +50,63 @@
     <section class="schedule-form">
       <h2>Marque sua consulta</h2>
       <p>Hospital Ponta Negra</p>
-      <form>
+      <form [formGroup]="scheduleForm" (ngSubmit)="submitForm()">
         <div class="container-form">
           <div class="container-input">
             <label for="date">Data:</label>
-            <input type="date" id="date" name="date" required>
+            <input
+              type="date"
+              id="date"
+              formControlName="date"
+              required
+            />
           </div>
           <div class="container-input">
-            <label for="date">Especialidade:</label>
-            <input type="text" id="specialist-name" name="date" required>
+            <label for="specialist-name">Especialidade:</label>
+            <input
+              type="text"
+              id="specialist-name"
+              formControlName="specialty"
+              required
+            />
           </div>
           <div class="container-input">
-            <label for="date">Médico(a):</label>
-            <input type="text" id="doctor-name" name="date" required>
+            <label for="doctor-name">Médico(a):</label>
+            <input
+              type="text"
+              id="doctor-name"
+              formControlName="doctor"
+              required
+            />
           </div>
         </div>
 
         <div class="times">
           <p><strong>Horários</strong></p>
-          <div class="time-group">
-            <span class="time">8:00</span>
-            <span class="time">9:00</span>
-            <span class="time">10:00</span>
-            <span class="time">11:00</span>
-            <span class="time">12:00</span>
-          </div>
-          <div class="time-group">
-            <span class="time">13:00</span>
-            <span class="time">14:00</span>
-            <span class="time">15:00</span>
-            <span class="time">16:00</span>
-            <span class="time">17:00</span>
-          </div>
+          <select class="times" formControlName="time">
+            <option value="" selected disabled>Selecione um horário</option>
+            <option value="08:00">08:00</option>
+            <option value="08:30">08:30</option>
+            <option value="09:00">09:00</option>
+            <option value="09:30">09:30</option>
+            <option value="10:00">10:00</option>
+            <option value="10:30">10:30</option>
+            <option value="11:00">11:00</option>
+            <option value="11:30">11:30</option>
+            <option value="12:00">12:00</option>
+            <option value="12:30">12:30</option>
+            <option value="13:00">13:00</option>
+            <option value="13:30">13:30</option>
+            <option value="14:00">14:00</option>
+            <option value="14:30">14:30</option>
+            <option value="15:00">15:00</option>
+            <option value="15:30">15:30</option>
+            <option value="16:00">16:00</option>
+            <option value="16:30">16:30</option>
+            <option value="17:00">17:00</option>
+          </select>
         </div>
+        <button type="submit">Agendar</button>
       </form>
     </section>
   </div>

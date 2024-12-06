@@ -23,4 +23,7 @@ export class MenuComponent implements OnInit {
       this.router.navigate(['/adm-scheduling']);
     }
   }
+  timeValue() {
+    
+  }
 }
