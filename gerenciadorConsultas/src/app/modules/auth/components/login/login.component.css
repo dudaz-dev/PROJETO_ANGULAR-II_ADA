@@ -3,6 +3,7 @@ main {
   width: 100vw;
   height: 100vh;
   background-color: #d1ffe6;
+  transition: background-color 1s ease, color 1s ease;
 }
 
 .container-login {
@@ -115,6 +116,7 @@ main {
 
     .btn {
       background-color: #029743;
+      transition: background-color 1s ease, color 1s ease;
       color: #fff;
       border: none;
       padding: 10px;
@@ -142,10 +144,12 @@ main {
 
 .admin-black-mode{
   background-color: #CECECE;
+  transition: background-color 1s ease, color 1s ease;
 
   .login-section{
     .form-login{
       .btn{
+        transition: background-color 1s ease, color 1s ease;
         background-color: #000000;
 
       }
