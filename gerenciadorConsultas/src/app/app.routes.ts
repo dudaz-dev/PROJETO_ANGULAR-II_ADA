@@ -5,8 +5,9 @@ import { AdmHistoryComponent } from './modules/aplicacao/adm/adm-history/adm-his
 import { UserHistoryComponent } from './modules/aplicacao/user/user-history/user-history.component';
 import { LoginComponent } from './modules/auth/components/login/login.component';
 import { RecoveryComponent } from './modules/auth/components/recovery/recovery.component';
+import { UserSchedulingComponent } from './modules/user-scheduling/user-scheduling.component';
+import { AdmSchedulingComponent } from './modules/adm-scheduling/adm-scheduling.component';
 import { RegisterComponent } from './modules/auth/components/register/register.component';
-
 import { AplicacaoADMComponent } from './modules/aplicacao/adm/aplicacao-adm/aplicacao-adm.component';
 import { AplicacaoComponent } from './modules/aplicacao/aplicacao.component';
 
@@ -54,6 +55,14 @@ export const routes: Routes = [
     component: RecoveryComponent,
   },
   {
+    path: 'user-scheduling',
+    component: UserSchedulingComponent,
+  },
+  {
+    path: 'adm-scheduling',
+    component: AdmSchedulingComponent,
+  },
+  {
     /* MOLDE ÁPOS ALTENTICAÇÃO DE LOGIN SER UTILIZADA:
     {
     path: 'aplication',
@@ -95,3 +104,4 @@ export const routes: Routes = [
     component: NotFoundComponent,
   },
 ];
+

@@ -1,0 +1,10 @@
+app-main {
+    background-color: #CECECE;
+    display: block;
+    width: 100vw;
+}
+
+app-footer {
+    display: block;
+    height: 5rem;
+}

@@ -2,8 +2,12 @@
   <!-- Navegação -->
   <nav class="navigation">
     <button class="nav-button active">
-      <img class="schedules-img" src="../../../../../assets/img/calendar.svg" alt="Agendados" />
-      Agendados
+      <img class="schedules-img" src="../../../../../assets/img/calendar.svg" alt="Agendamento ícone" />
+      Agendamento de Paciêntes
+    </button>
+    <button class="nav-button">
+      <img class="schedules-img" src="../../../../../assets/img/register.svg" alt="Cadastrar Médico ícone" />
+      Cadastrar Médico
     </button>
   </nav>
 
@@ -88,8 +92,20 @@
       <h2>Marque sua consulta</h2>
       <p>Hospital Ponta Negra</p>
       <form>
-        <label for="date">Data:</label>
-        <input type="date" id="date" name="date">
+        <div class="container-form">
+          <div class="container-input">
+            <label for="date">Data:</label>
+            <input type="date" id="date" name="date" required>
+          </div>
+          <div class="container-input">
+            <label for="date">Especialidade:</label>
+            <input type="text" id="specialist-name" name="date" required>
+          </div>
+          <div class="container-input">
+            <label for="date">Médico(a):</label>
+            <input type="text" id="doctor-name" name="date" required>
+          </div>
+        </div>
 
         <div class="times">
           <p><strong>Horários</strong></p>
