@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Appointments } from '../aplicacao/Modal/appointments.model';
 
 @Component({
   selector: 'app-user-scheduling',
@@ -12,12 +13,8 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
   styleUrls: ['./user-scheduling.component.css'], 
 })
 export class UserSchedulingComponent {
-  form: FormGroup; 
-
-  constructor(private fb: FormBuilder) {
-    this.form = this.fb.group({
-      date: ['', Validators.required], 
-      time: ['', Validators.required], 
-    });
-  }
+  form: FormGroup = new FormGroup({
+    date: new FormControl('', [Validators.required]),
+    time: new FormControl('', [Validators.required]),
+  });
 }
