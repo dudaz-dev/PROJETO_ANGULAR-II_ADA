@@ -67,9 +67,9 @@ export class LoginComponent {
           sessionStorage.setItem('USER_TOKEN', res.token);
           sessionStorage.setItem('USER_ROLE', res.user.role);
 
-          if (res.user.role === 'USER') this.router.navigate(['/dashboard']);
+          if (res.user.role === 'USER') this.router.navigate(['/aplication']);
           if (res.user.role === 'ADMIN')
-            this.router.navigate(['/dashboardAdm']);
+            this.router.navigate(['/aplication/adm']);
         },
         error: (err) => {
           console.error(err);
