@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthenticatedUser } from '../models/authenticated-user.model';
 import { UserCredentials } from '../models/user-credentials.model';
 import { User } from '../models/user.model';
@@ -22,5 +22,9 @@ export class AuthService {
       `${this.apiUrl}/login`,
       credential
     );
+  }
+
+  getAuthenticatedUser(): Observable<AuthenticatedUser> {
+    return this.http.get<AuthenticatedUser>(`http://localhost:3000/users`);
   }
 }
