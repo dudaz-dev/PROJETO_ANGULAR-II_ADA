@@ -17,11 +17,15 @@ export class ConsultasService {
     this.consultas$.next([...this.consultas$.value, newConsulta]);
   }
 
-  // private removeProduct(id: string): void {
-  //   this.productList$.next(
-  //     this.productList$.value.filter((product) => product.id !== id)
-  //   );
-  // }
+  private removeConsulta(id: string): void {
+    this.consultas$.next(
+      this.consultas$.value.filter((consulta) => consulta.id !== id)
+    );
+  }
+
+  getConsultaById(id: string): Observable<Appointments> {
+    return this.http.get<Appointments>(`${this.apiUrl}/${id}`);
+  }
 
   getConsultas() {
     this.http.get<Appointments[]>(this.apiUrl).subscribe({
@@ -34,7 +38,7 @@ export class ConsultasService {
     });
   }
 
-  adddConsulta(appointment: Appointments): Observable<void> {
+  saveConsulta(appointment: Appointments): Observable<void> {
     return this.http.post<void>(this.apiUrl, appointment).pipe(
       tap(() => {
         this.addConsulta(appointment);
@@ -42,15 +46,13 @@ export class ConsultasService {
     );
   }
 
-  getConsultaById(id: string): Observable<Appointments> {
-    return this.http.get<Appointments>(`${this.apiUrl}/${id}`);
-  }
-
   editConsulta(appoitment: Appointments) {
     return this.http.put(`${this.apiUrl}/${appoitment.id}`, appoitment);
   }
 
   deleteConsulta(id: string) {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http
+      .delete(`${this.apiUrl}/${id}`)
+      .pipe(tap(() => this.removeConsulta(id)));
   }
 }

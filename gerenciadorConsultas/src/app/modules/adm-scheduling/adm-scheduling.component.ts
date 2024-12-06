@@ -14,7 +14,6 @@ import { HeaderComponent } from './components/header/header.component';
   styleUrl: './adm-scheduling.component.css', // Corrigido de styleUrl para styleUrls
 })
 export class AdmSchedulingComponent {
-  // appointments: any[] = [];
   appointments = this.consultasService.listaConsultas$;
 
   scheduleForm: FormGroup = new FormGroup({
@@ -40,17 +39,15 @@ export class AdmSchedulingComponent {
       return;
     }
 
-    // const newAppointment = this.scheduleForm.getRawValue();
-    // this.consultasService.addConsulta(newAppointment).subscribe({
-    //   next: (response) => {
-    //     this.appointments.push(response);
-    //     this.spamService.openSpam('Agendamento realizado com sucesso!');
-    //     this.consultasService.getConsultas();
-    //     this.scheduleForm.reset();
-    //   },
-    //   error: (error) => {
-    //     console.error('Erro ao criar agendamento:', error);
-    //   },
-    // });
+    const newAppointment = this.scheduleForm.getRawValue();
+    this.consultasService.saveConsulta(newAppointment).subscribe({
+      next: () => {
+        this.spamService.openSpam('Agendamento realizado com sucesso!');
+        this.scheduleForm.reset();
+      },
+      error: (err) => {
+        console.error('Erro ao criar agendamento:', err);
+      },
+    });
   }
 }

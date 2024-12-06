@@ -33,7 +33,7 @@
           <div class="info" id="specialist">
             <h3 class="expertise">{{ appointment.specialty }}</h3>
             <p class="specialist-name">{{ appointment.doctor }}</p>
-            <p class="exame" id="date">{{ appointment.date }}</p>
+            <p class="exame" id="date">{{ appointment.date | date }}</p>
             <p class="exame" id="hour">{{ appointment.time }}</p>
           </div>
           <div class="info">
