@@ -11,7 +11,7 @@ import { HeaderComponent } from './components/header/header.component';
   standalone: true,
   imports: [HeaderComponent, FooterComponent, CommonModule],
   templateUrl: './adm-scheduling.component.html',
-  styleUrl: './adm-scheduling.component.css', // Corrigido de styleUrl para styleUrls
+  styleUrl: './adm-scheduling.component.css',
 })
 export class AdmSchedulingComponent {
   // appointments: any[] = [];

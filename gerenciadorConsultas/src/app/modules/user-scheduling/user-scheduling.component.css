@@ -8,3 +8,199 @@ app-footer {
     display: block;
     height: 5rem;
 }
+
+/* Estiliza a barra de rolagem para navegadores que suportam ::-webkit-scrollbar */
+::-webkit-scrollbar {
+    width: 10px; /* Largura da barra de rolagem */
+    height: 10px; /* Altura da barra de rolagem para scroll horizontal */
+    }
+    
+    ::-webkit-scrollbar-thumb {
+    background-color: #006400; /* Cor da barra de rolagem (verde escuro) */
+    border-radius: 10px; /* Arredondamento das bordas */
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+    background-color: #004d00; /* Cor ao passar o mouse */
+    }
+    
+    ::-webkit-scrollbar-track {
+    background-color: #90ee90; /* Cor do fundo (verde claro) */
+    border-radius: 10px; /* Arredondamento das bordas do fundo */
+    }
+    
+    .schedules-img {
+      width: 2rem;
+      margin: .6rem;
+    }
+    
+    .container {
+      font-family: Arial, sans-serif;
+      background-color: #e8f9e9;
+      display: block;
+      padding-top: .9375rem;
+      height: 77vh;
+      width: 100vw;
+      margin: 0;
+    }
+    
+    .navigation {
+      display: flex;
+      gap: 10px;
+      margin: 10px;
+    }
+    
+    .nav-button {
+      height: 3.3rem;
+      width: 15rem;
+      background: #f0f0f0;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      box-shadow: 0px 3px 10px 0px #848484a6;
+    }
+    
+    .nav-button.active {
+      background: #d4f5d6;
+      border: 2px solid #28a745;
+    }
+    
+    .content {
+      display: flex;
+      gap: 40px;
+      width: 100vw;
+      justify-content: space-between;
+    }
+    
+    .appointments {
+      flex: 1;
+      background: white;
+      border-top-right-radius: 1.875rem;
+      border-bottom-right-radius: 1.875rem;
+      padding: 20px;
+      overflow: hidden;
+      max-height: 500px;
+    }
+    
+    .appointments-list {
+      max-height: 430px;
+      width: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      overflow-y: auto;
+    }
+    
+    .appointment-card {
+      border: 1px solid #28a745;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      justify-content: space-between;
+      width: 30rem;
+    }
+    
+    .appointment-card .info {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    
+    .info h3 {
+      margin: 0;
+      color: #28a745;
+      font-size: 1.2rem;
+    }
+    
+    
+    .info p {
+      margin: 0;
+      color: #333;
+    }
+    
+    .info #date {
+      margin-top: 1rem;
+    }
+    
+    .buttons {
+      height: 4rem;
+      align-content: center;
+      margin-left: 2rem;
+    }
+    
+    .buttons > button {
+      margin-right: 5px;
+    }
+    
+    .reschedule-btn, .cancel-btn {
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      background-color: #fff;
+      font-weight: 600;
+    }
+    
+    .reschedule-btn {
+      border: 2px solid #28a745;
+      color: #28a745;
+    }
+    
+    .cancel-btn {
+      border: 2px solid #ff4d4d;
+      color: #ff4d4d;
+    }
+    
+    .schedule-form {
+      flex: 1;
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    input[type="date"], select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      width: 15rem;
+    }
+    
+    .times {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .time-group {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .time {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .time.disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }    
