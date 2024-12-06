@@ -98,7 +98,7 @@ export class RegisterComponent implements OnInit {
       .subscribe({
         complete: () => {
           this.spamService.openSpam('Cadastro realizado com sucesso!');
-          this.router.navigate(['/login']);
+          this.router.navigate(['/auth/login']);
         },
         error: (err) => {
           console.error(err);

@@ -1,37 +1,57 @@
 import { Routes } from '@angular/router';
-import { AboutUsMainComponent } from './modules/about-us-main/about-us-main.component';
-import { LoginComponent } from './modules/auth/components/login/login.component';
-import { RegisterComponent } from './modules/auth/components/register/register.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
-import { RecoveryComponent } from './modules/auth/components/recovery/recovery.component';
-import { AplicationComponent } from './modules/aplicacao/aplicacao.component';
+import { AboutUsMainComponent } from './modules/about-us-main/about-us-main.component';
+import { AdmHistoryComponent } from './modules/aplicacao/adm/adm-history/adm-history.component';
 import { UserHistoryComponent } from './modules/aplicacao/user/user-history/user-history.component';
-import { AdmHistoryComponent } from './modules/aplicacao/adm/adm-history/adm-history.component'; 
+import { LoginComponent } from './modules/auth/components/login/login.component';
+import { RecoveryComponent } from './modules/auth/components/recovery/recovery.component';
 import { UserSchedulingComponent } from './modules/user-scheduling/user-scheduling.component';
 import { AdmSchedulingComponent } from './modules/adm-scheduling/adm-scheduling.component';
+import { RegisterComponent } from './modules/auth/components/register/register.component';
+import { AplicacaoADMComponent } from './modules/aplicacao/adm/aplicacao-adm/aplicacao-adm.component';
+import { AplicacaoComponent } from './modules/aplicacao/aplicacao.component';
 
 export const routes: Routes = [
-
   {
     path: '',
     redirectTo: 'about-us-main',
     pathMatch: 'full',
-  }, 
+  },
   {
     path: 'about-us-main',
     component: AboutUsMainComponent,
   },
-  
   {
-    path:'login',
-    component: LoginComponent,
+    path: 'auth',
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent,
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+      },
+    ],
+  },
+  // {
+  //   path:'login',
+  //   component: LoginComponent,
+  // },
+  // {
+  //   path:'register',
+  //   component: RegisterComponent,
+  // },
+  {
+    path: 'dashboard',
+    component: AplicacaoComponent,
   },
   {
-    path:'register',
-    component: RegisterComponent,
+    path: 'dashboardAdm',
+    component: AplicacaoADMComponent,
   },
   {
-    path:'recovery',
+    path: 'recovery',
     component: RecoveryComponent,
   },
   {
@@ -53,37 +73,35 @@ export const routes: Routes = [
   },  
     
   */
-    path:'aplication',
+    path: 'aplication',
     children: [
       {
         path: '',
-        component: AplicationComponent,
-      },   
+        component: AplicacaoComponent,
+      },
       {
         path: 'user',
         children: [
-         { 
-          path:'history',
-          component: UserHistoryComponent,
-        }
-        ]
+          {
+            path: 'history',
+            component: UserHistoryComponent,
+          },
+        ],
       },
       {
-        path:'adm',
-        children:[
+        path: 'adm',
+        children: [
           {
             path: 'history',
             component: AdmHistoryComponent,
-          },          
-
-        ]
-      }
-    ]    
+          },
+        ],
+      },
+    ],
   },
   {
-    path:'**',
+    path: '**',
     component: NotFoundComponent,
   },
-
 ];
 
