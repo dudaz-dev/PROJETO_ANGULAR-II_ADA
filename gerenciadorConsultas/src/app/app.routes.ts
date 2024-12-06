@@ -38,42 +38,21 @@ export const routes: Routes = [
     path: 'recovery',
     component: RecoveryComponent,
   },
-  // {
-  //   path: 'user-scheduling',
-  //   component: UserSchedulingComponent,
-  //   canActivate: [authGuard, rolesGuard],
-  //   data: {
-  //     roles: [UserRoles.USER],
-  //   },
-  // },
-  // {
-  //   path: 'adm-scheduling',
-  //   component: AdmSchedulingComponent,
-  //   canActivate: [authGuard, rolesGuard],
-  //   data: {
-  //     roles: [UserRoles.ADMIN],
-  //   },
-  // },
   {
-    path: 'appointments',
-    children: [
-      {
-        path: 'user-scheduling',
-        component: UserSchedulingComponent,
-        canActivate: [authGuard, rolesGuard],
-        data: {
-          roles: [UserRoles.USER],
-        },
-      },
-      {
-        path: 'adm-scheduling',
-        component: AdmSchedulingComponent,
-        canActivate: [authGuard, rolesGuard],
-        data: {
-          roles: [UserRoles.ADMIN],
-        },
-      },
-    ],
+    path: 'user-scheduling',
+    component: UserSchedulingComponent,
+    canActivate: [authGuard, rolesGuard],
+    data: {
+      roles: [UserRoles.USER],
+    },
+  },
+  {
+    path: 'adm-scheduling',
+    component: AdmSchedulingComponent,
+    canActivate: [authGuard, rolesGuard],
+    data: {
+      roles: [UserRoles.ADMIN],
+    },
   },
   {
     path: 'aplication',

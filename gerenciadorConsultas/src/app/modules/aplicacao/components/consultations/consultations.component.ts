@@ -9,31 +9,32 @@ import { Appointments } from '../../Modal/appointments.model';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './consultations.component.html',
-  styleUrls: ['./consultations.component.css']
+  styleUrls: ['./consultations.component.css'],
 })
-export class ConsultationsComponent implements OnInit {
-  appointments: Appointments[] = [];
+export class ConsultationsComponent {
+  // appointments: Appointments[] = [];
+  appointmentsData = this.consultasService.listaConsultas$;
 
   constructor(
     private consultasService: ConsultasService,
     private destroyRef: DestroyRef
   ) {}
 
-  ngOnInit(): void {
-    this.getAppointments();
-  }
+  // ngOnInit(): void {
+  //   this.getAppointments();
+  // }
 
-  getAppointments(): void {
-    this.consultasService
-      .getConsultas()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe({
-        next: (response) => {
-          this.appointments = response;
-        },
-        error: (error) => {
-          console.error('Erro ao buscar consultas:', error);
-        },
-      });
-  }
+  // getAppointments(): void {
+  //   this.consultasService
+  //     .getConsultas()
+  //     .pipe(takeUntilDestroyed(this.destroyRef))
+  //     .subscribe({
+  //       next: (response) => {
+  //         this.appointments = response;
+  //       },
+  //       error: (error) => {
+  //         console.error('Erro ao buscar consultas:', error);
+  //       },
+  //     });
+  // }
 }
