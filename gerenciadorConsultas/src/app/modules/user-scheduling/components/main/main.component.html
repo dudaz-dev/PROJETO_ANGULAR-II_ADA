@@ -2,7 +2,11 @@
   <!-- Navegação -->
   <nav class="navigation">
     <button class="nav-button active">
-      <img class="schedules-img" src="../../../../../assets/img/calendar.svg" alt="Agendados" />
+      <img
+        class="schedules-img"
+        src="../../../../../assets/img/calendar.svg"
+        alt="Agendados"
+      />
       Agendados
     </button>
   </nav>
@@ -11,7 +15,6 @@
     <!-- Lista de agendamentos -->
     <section class="appointments">
       <div class="appointments-list">
-
         <div class="appointment-card">
           <div class="info" id="specialist">
             <h3 class="expertise">Nutricionista</h3>
@@ -79,7 +82,6 @@
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -87,13 +89,35 @@
     <section class="schedule-form">
       <h2>Marque sua consulta</h2>
       <p>Hospital Ponta Negra</p>
-      <form>
+      <form [formGroup]="form">
         <label for="date">Data:</label>
-        <input type="date" id="date" name="date">
+        <input type="date" id="date" name="date" formControlName="date" />
 
-        <div class="times">
+        <div class="times" (click)="timeValue()">
           <p><strong>Horários</strong></p>
-          <div class="time-group">
+          <select class="times" name="times" formControlName="time">
+            <option value="" selected disabled>Selecione um horário</option>
+            <option value="08:00">08:00</option>
+            <option value="08:30">08:30</option>
+            <option value="09:00">09:00</option>
+            <option value="09:30">09:30</option>
+            <option value="10:00">10:00</option>
+            <option value="10:30">10:30</option>
+            <option value="11:00">11:00</option>
+            <option value="11:30">11:30</option>
+            <option value="12:00">12:00</option>
+            <option value="12:30">12:30</option>
+            <option value="13:00">13:00</option>
+            <option value="13:30">13:30</option>
+            <option value="14:00">14:00</option>
+            <option value="14:30">14:30</option>
+            <option value="15:00">15:00</option>
+            <option value="15:30">15:30</option>
+            <option value="16:00">16:00</option>
+            <option value="16:30">16:30</option>
+            <option value="17:00">17:00</option>
+          </select>
+          <!-- <div class="time-group">
             <span class="time">8:00</span>
             <span class="time">9:00</span>
             <span class="time">10:00</span>
@@ -106,7 +130,7 @@
             <span class="time">15:00</span>
             <span class="time">16:00</span>
             <span class="time">17:00</span>
-          </div>
+          </div> -->
         </div>
       </form>
     </section>

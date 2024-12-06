@@ -7,16 +7,16 @@ import { AdmSchedulingComponent } from './adm-scheduling.component'
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    FooterComponent,
-    MainComponent,
-    AdmSchedulingComponent,
+    // HeaderComponent,
+    // FooterComponent,
+    // MainComponent,
+    // AdmSchedulingComponent,
   ],
   imports: [
     CommonModule,
   ],
   exports: [
-    AdmSchedulingComponent,
+    // AdmSchedulingComponent,
   ],
 })
 export class AdmSchedulingModule {}

@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, DestroyRef, OnInit } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { AuthenticatedUser } from '../../../auth/models/authenticated-user.model';
-import { AuthService } from '../../../auth/services/auth.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -14,9 +12,15 @@ import { AuthService } from '../../../auth/services/auth.service';
 export class MenuComponent implements OnInit {
   userRole = sessionStorage.getItem('USER_ROLE');
 
-  constructor(
-  ) {}
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onAgendamento(): void {
+    if (this.userRole === 'USER') {
+      this.router.navigate(['/user-scheduling']);
+    } else {
+      this.router.navigate(['/adm-scheduling']);
+    }
   }
 }

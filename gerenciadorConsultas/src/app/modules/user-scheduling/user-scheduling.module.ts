@@ -7,16 +7,16 @@ import { UserSchedulingComponent } from './user-scheduling.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent,
-    FooterComponent,
-    MainComponent,
-    UserSchedulingComponent,
+    // HeaderComponent,
+    // FooterComponent,
+    // MainComponent,
+    // UserSchedulingComponent,
   ],
   imports: [
     CommonModule,
   ],
   exports: [
-    UserSchedulingComponent,
+    // UserSchedulingComponent,
   ],
 })
 export class UserSchedulingModule {}
