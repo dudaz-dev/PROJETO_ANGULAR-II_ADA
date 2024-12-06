@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { SpamService } from '../../common/services/spam.service';
 import { ConsultasService } from '../aplicacao/services/consultas.service';
 import { FooterComponent } from './components/footer/footer.component';
@@ -9,7 +14,12 @@ import { HeaderComponent } from './components/header/header.component';
 @Component({
   selector: 'app-adm-scheduling',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, CommonModule],
+  imports: [
+    HeaderComponent,
+    FooterComponent,
+    CommonModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: './adm-scheduling.component.html',
   styleUrl: './adm-scheduling.component.css',
 })
@@ -32,6 +42,16 @@ export class AdmSchedulingComponent {
 
   ngOnInit(): void {
     this.consultasService.getConsultas();
+  }
+
+  statusDone() {
+    this.scheduleForm.controls['status'].setValue('DONE');
+    console.log(this.scheduleForm.controls['status']);
+  }
+
+  statusCanceled() {
+    this.scheduleForm.controls['status'].setValue('CANCELED');
+    console.log(this.scheduleForm.controls['status']);
   }
 
   submitForm(): void {

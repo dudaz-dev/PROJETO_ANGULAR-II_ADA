@@ -40,8 +40,8 @@
             <p><strong>Hospital Ponta Negra</strong></p>
             <p>Av. Ayrton Senna, 34 - Capim Macio</p>
             <div class="buttons">
-              <button class="reschedule-btn">Reagendar</button>
-              <button class="cancel-btn">Cancelar</button>
+              <button class="reschedule-btn" (click)="statusDone()">Concluída</button>
+              <button class="cancel-btn" (click)="statusCanceled()">Cancelar</button>
             </div>
           </div>
         </div>
@@ -52,16 +52,11 @@
     <section class="schedule-form">
       <h2>Marque sua consulta</h2>
       <p>Hospital Ponta Negra</p>
-      <form formGroup="scheduleForm" (ngSubmit)="submitForm()">
+      <form [formGroup]="scheduleForm" (ngSubmit)="submitForm()">
         <div class="container-form">
           <div class="container-input">
             <label for="date">Data:</label>
-            <input
-              type="date"
-              id="date"
-              formControlName="date"
-              required
-            />
+            <input type="date" id="date" formControlName="date" required />
           </div>
           <div class="container-input">
             <label for="specialist-name">Especialidade:</label>
@@ -113,6 +108,5 @@
     </section>
   </div>
 </main>
-
 
 <app-footer></app-footer>
