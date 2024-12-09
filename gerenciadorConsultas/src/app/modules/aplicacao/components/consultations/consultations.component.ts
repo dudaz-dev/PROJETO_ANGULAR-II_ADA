@@ -1,6 +1,7 @@
 import { Component, OnInit, DestroyRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Observable } from 'rxjs'; // Importando Observable
 import { ConsultasService } from '../../services/consultas.service';
 import { Appointments } from '../../Modal/appointments.model';
 
@@ -11,30 +12,16 @@ import { Appointments } from '../../Modal/appointments.model';
   templateUrl: './consultations.component.html',
   styleUrls: ['./consultations.component.css'],
 })
-export class ConsultationsComponent {
-  // appointments: Appointments[] = [];
-  appointmentsData = this.consultasService.listaConsultas$;
+export class ConsultationsComponent implements OnInit {
+  appointmentsData$: Observable<Appointments[]> | undefined; 
+appointment: any;
 
   constructor(
     private consultasService: ConsultasService,
     private destroyRef: DestroyRef
   ) {}
 
-  // ngOnInit(): void {
-  //   this.getAppointments();
-  // }
-
-  // getAppointments(): void {
-  //   this.consultasService
-  //     .getConsultas()
-  //     .pipe(takeUntilDestroyed(this.destroyRef))
-  //     .subscribe({
-  //       next: (response) => {
-  //         this.appointments = response;
-  //       },
-  //       error: (error) => {
-  //         console.error('Erro ao buscar consultas:', error);
-  //       },
-  //     });
-  // }
+  ngOnInit(): void {    
+    this.appointmentsData$ = this.consultasService.listaConsultas$;
+  }
 }

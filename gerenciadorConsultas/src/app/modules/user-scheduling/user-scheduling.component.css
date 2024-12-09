@@ -1,5 +1,4 @@
 app-main {
-    background-color: #e8f9e9;
     display: block;
     width: 100vw;
 }
@@ -36,10 +35,9 @@ app-footer {
     
     .container {
       font-family: Arial, sans-serif;
-      background-color: #e8f9e9;
       display: block;
       padding-top: .9375rem;
-      height: 77vh;
+      height: 85vh;
       width: 100vw;
       margin: 0;
     }

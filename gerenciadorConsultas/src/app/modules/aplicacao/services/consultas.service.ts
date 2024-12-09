@@ -1,58 +1,88 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Appointments } from '../Modal/appointments.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConsultasService {
-  private apiUrl = 'http://localhost:3000/appointments';
-  private consultas$ = new BehaviorSubject<Appointments[]>([]);
-  listaConsultas$ = this.consultas$.asObservable();
+  deleteConsulta(id: string) {
+    throw new Error('Method not implemented.');
+  }
+  private apiUrl = 'http://localhost:3000/appointments'; // URL base da API
+  private consultasSubject = new BehaviorSubject<Appointments[]>([]); 
+  // Gerencia a lista de consultas
+  listaConsultas$ = this.consultasSubject.asObservable(); 
+  // Observável para componentes
 
   constructor(private http: HttpClient) {}
 
-  private addConsulta(newConsulta: Appointments): void {
-    this.consultas$.next([...this.consultas$.value, newConsulta]);
-  }
-
-  private removeConsulta(id: string): void {
-    this.consultas$.next(
-      this.consultas$.value.filter((consulta) => consulta.id !== id)
-    );
-  }
-
-  getConsultaById(id: string): Observable<Appointments> {
-    return this.http.get<Appointments>(`${this.apiUrl}/${id}`);
-  }
-
-  getConsultas() {
-    this.http.get<Appointments[]>(this.apiUrl).subscribe({
-      next: (res) => {
-        this.consultas$.next(res);
-      },
-      error: (error) => {
-        console.error('Erro ao criar agendamento:', error);
-      },
-    });
-  }
-
-  saveConsulta(appointment: Appointments): Observable<void> {
-    return this.http.post<void>(this.apiUrl, appointment).pipe(
-      tap(() => {
-        this.addConsulta(appointment);
+   // Obter todas as consultas com status "SCHEDULED"
+   getScheduledConsultations(): Observable<Appointments[]> {
+    return this.http.get<Appointments[]>(this.apiUrl).pipe(
+      tap((appointments) => {
+        const scheduledAppointments = appointments.filter(
+          (appointment) => appointment.status === 'SCHEDULED'
+        );
+        this.consultasSubject.next(scheduledAppointments); 
       })
     );
   }
 
-  editConsulta(appoitment: Appointments) {
-    return this.http.put(`${this.apiUrl}/${appoitment.id}`, appoitment);
+  // Obter todas as consultas
+  getConsultas(): Observable<Appointments[]> {
+    return this.http.get<Appointments[]>(this.apiUrl).pipe(
+      tap((appointments) => this.consultasSubject.next(appointments))
+    );
   }
 
-  deleteConsulta(id: string) {
-    return this.http
-      .delete(`${this.apiUrl}/${id}`)
-      .pipe(tap(() => this.removeConsulta(id)));
+  // Salvar nova consulta
+  saveConsulta(consulta: Appointments): Observable<Appointments> {
+    return this.http.post<Appointments>(this.apiUrl, consulta).pipe(
+      tap((newAppointment) => {
+        const currentAppointments = this.consultasSubject.getValue();
+        this.consultasSubject.next([...currentAppointments, newAppointment]);
+      })
+    );
   }
+
+  // Excluir consulta
+  cancelAppointment(id: string): Observable<void> {
+    const url = `${this.apiUrl}/cancel/${id}`;
+    return this.http.put<void>(url, null); // Realiza o PUT sem corpo
+  }
+
+  // Atualizar consulta
+  updateConsulta(appointment: Appointments): Observable<Appointments> {
+    return this.http
+      .put<Appointments>(`${this.apiUrl}/${appointment.id}`, appointment)
+      .pipe(
+        tap((updatedAppointment) => {
+          const updatedAppointments = this.consultasSubject
+            .getValue()
+            .map((appt) =>
+              appt.id === updatedAppointment.id ? updatedAppointment : appt
+            );
+          this.consultasSubject.next(updatedAppointments);
+        })
+      );
+  }
+
+    // Busca todas as consultas
+    getAppointments(): Observable<History[]> {
+      return this.http.get<History[]>(this.apiUrl);
+    }
+
+  markAsDone(id: string): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/done/${id}`, {}).pipe(
+        tap(() => {
+            const updatedAppointments = this.consultasSubject.getValue().map((appt) =>
+                appt.id === id ? { ...appt, status: 'DONE' } : appt
+            );
+            this.consultasSubject.next(updatedAppointments);
+        })
+    );
 }
+}  

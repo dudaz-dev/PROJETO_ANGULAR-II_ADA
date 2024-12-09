@@ -27,4 +27,8 @@ export class AuthService {
   getAuthenticatedUser(): Observable<AuthenticatedUser> {
     return this.http.get<AuthenticatedUser>(`http://localhost:3000/users`);
   }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.apiUrl);
+  }
 }

@@ -1,11 +1,14 @@
 /* Estilo geral para o container das consultas */
 .consultations-list {
+  max-height: 350px;
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-top: 30px;
+
+  overflow-y: auto;
 }
+
 
 /* Título das consultas */
 .consultations-list h2 {
@@ -15,22 +18,28 @@
   margin-bottom: 20px;
 }
 
-/* Estilo para o container de cada consulta */
-.consultation-container {
-  display: grid;
-  grid-template-columns: 2fr 2fr;
-  gap: 20px;
+.alinhar{   
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16px;  
+  gap: 25px;
 }
+
 
 /* Estilo para cada item de consulta */
 .consultation-item {
+  width: 550px;
+
+
   background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  padding: 20px;
+  border-radius: 10px;
+  gap: 16px;
+
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: column;  
   transition: all 0.3s ease;
 }
 
@@ -43,7 +52,7 @@
 /* Estilo do cabeçalho da consulta (especialidade e médico) */
 .consultation-header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 5px;
 }
 
@@ -56,6 +65,7 @@
 .consultation-header p {
   font-size: 16px;
   color: #555;
+  font-weight: 700;
 }
 
 /* Corpo da consulta (data, horário e observação) */

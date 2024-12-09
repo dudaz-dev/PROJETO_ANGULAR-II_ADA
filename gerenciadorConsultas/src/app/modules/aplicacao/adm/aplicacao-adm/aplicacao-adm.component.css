@@ -2,11 +2,10 @@
 
 /* Estilos gerais da página */
 .container {
-    background-color: #e1feef;
     width: 100%;
     padding: 0; 
     margin-bottom: 32px;
-    height: 90vh;
+    height: 85vh;
     
       .welcome {
         font-size: 1.5rem;

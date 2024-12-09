@@ -19,21 +19,12 @@ import { History } from '../../../auth/models/history.model';
     MatButtonModule,
     HeaderADMComponent,
     FooterComponent,
-    MatCardModule,],
+    MatCardModule,
+  ],
   templateUrl: './adm-history.component.html',
-  styleUrl: './adm-history.component.css'
+  styleUrls: ['./adm-history.component.css']
 })
-export class AdmHistoryComponent {
- /* cardsAdm = [
-    {
-      title: 'Consulta',
-      subtitle: 'Paciente João',
-      info: 'Hospital Ponta Negra',
-      address: 'Av. Ayrton Senna, 34 - Capim Macio',
-      date: 'Seg., 25 de dez. de 2024',
-      time: '11:30 h',
-    },
-  ];*/
+export class AdmHistoryComponent implements OnInit {
   cardsAdm: History[] = []; // Dados recebidos da API
   isLoading = true;      // Para indicar carregamento
   errorMessage = '';
@@ -44,18 +35,37 @@ export class AdmHistoryComponent {
     this.loadAppointments();
   }
 
-  loadAppointments(): void {
-    this.historyService.getAppointments().subscribe({
-      next: (data) => {
-        this.cardsAdm = data;
-        this.isLoading = false;
+// Método para carregar os compromissos da API
+loadAppointments(): void {
+  this.historyService.getAppointments().subscribe({
+    next: (data) => {
+      // Filtra compromissos com status DONE ou CANCELED
+      this.cardsAdm = data.filter(
+        (appt) => appt.status === 'DONE' || appt.status === 'CANCELED'
+      ); 
+      this.isLoading = false;
+    },
+    error: (err) => {
+      this.errorMessage = 'Não possui histórico de consultas.';
+      this.isLoading = false;
+      console.error(err);
+    },
+  });
+}
+  // Método para marcar um compromisso como concluído
+  markAsDone(id: string, token: string): void {
+    this.historyService.markAsDone(id, token).subscribe({
+      next: (updatedAppointment) => {
+        // Atualiza o compromisso marcado como concluído na lista local
+        const updatedAppointments = this.cardsAdm.map((appointment) =>
+          appointment.id === updatedAppointment.id ? updatedAppointment : appointment
+        );
+        this.cardsAdm = updatedAppointments;
       },
       error: (err) => {
-        this.errorMessage = 'Não possui histórico de consultas.';
-        this.isLoading = false;
-        console.error(err);
+        console.error('Erro ao marcar como concluído:', err);
       },
     });
-  } 
-
+  }
 }
+

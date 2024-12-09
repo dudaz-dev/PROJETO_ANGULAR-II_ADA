@@ -1,22 +1,13 @@
 <app-header></app-header>
-<!-- <app-main></app-main> -->
 <main class="container">
   <!-- Navegação -->
   <nav class="navigation">
     <button class="nav-button active">
-      <img
-        class="schedules-img"
-        src="../../../../../assets/img/calendar.svg"
-        alt="Agendamento ícone"
-      />
+      <img class="schedules-img" src="../../../../../assets/img/calendar.svg" alt="Agendamento ícone" />
       Agendamento de Pacientes
     </button>
     <button class="nav-button">
-      <img
-        class="schedules-img"
-        src="../../../../../assets/img/register.svg"
-        alt="Cadastrar Médico ícone"
-      />
+      <img class="schedules-img" src="../../../../../assets/img/register.svg" alt="Cadastrar Médico ícone" />
       Cadastrar Médico
     </button>
   </nav>
@@ -26,58 +17,86 @@
     <section class="appointments">
       <h2>Consultas Agendadas</h2>
       <div class="appointments-list">
-        <div
-          class="appointment-card"
-          *ngFor="let appointment of appointments | async"
-        >
-          <div class="info" id="specialist">
-            <h3 class="expertise">{{ appointment.specialty }}</h3>
-            <p class="specialist-name">{{ appointment.doctor }}</p>
-            <p class="exame" id="date">{{ appointment.date | date }}</p>
-            <p class="exame" id="hour">{{ appointment.time }}</p>
-          </div>
-          <div class="info">
-            <p><strong>Hospital Ponta Negra</strong></p>
-            <p>Av. Ayrton Senna, 34 - Capim Macio</p>
-            <div class="buttons">
-              <button class="reschedule-btn" (click)="statusDone()">Concluída</button>
-              <button class="cancel-btn" (click)="statusCanceled()">Cancelar</button>
+        <div *ngFor="let appointment of appointments | async">
+          <div class="appointment-card" *ngIf="appointment.status === 'SCHEDULED'">
+            <div class="info" id="specialist">
+              <h3 class="expertise">{{ appointment.specialty }}</h3>
+              <p class="specialist-name">{{ appointment.doctor }}</p>
+              <p class="exame" id="date">{{ appointment.date | date }}</p>
+              <p class="exame" id="hour">{{ appointment.time }}</p>
             </div>
-          </div>
+            <div class="info">
+              <p><strong>Hospital Ponta Negra</strong></p>
+              <p>Av. Ayrton Senna, 34 - Capim Macio</p>
+              <div class="buttons">
+                <button class="reschedule-btn" (click)="markAsDone(appointment.id)">Concluído</button>
+                <button class="cancel-btn" (click)="deleteAppointment(appointment)">Excluir</button>
+              </div>
+            </div>
+          </div>  
         </div>
       </div>
     </section>
 
-    <!-- Formulário de agendamento -->
     <section class="schedule-form">
       <h2>Marque sua consulta</h2>
       <p>Hospital Ponta Negra</p>
+
       <form [formGroup]="scheduleForm" (ngSubmit)="submitForm()">
         <div class="container-form">
-          <div class="container-input">
-            <label for="date">Data:</label>
-            <input type="date" id="date" formControlName="date" required />
+          <!-- Campo de Data e Especialidade lado a lado -->
+          <div class="container-row">
+            <div class="container-input">
+              <label for="date">Data:</label>
+              <input type="date" id="date" formControlName="date" required />
+              <span *ngIf="scheduleForm.get('date')?.hasError('pastDate')" class="error-message">
+                <p>A data não pode ser no passado.</p>
+              </span>
+            </div>
+            <div class="container-input">
+              <label for="specialty">Especialidade:</label>
+              <input type="text" id="specialty" formControlName="specialty" required />
+              <span *ngIf="scheduleForm.get('specialty')?.hasError('required') && scheduleForm.get('specialty')?.touched" class="error-message">
+                <p>Este campo é obrigatório.</p>
+              </span>
+            </div>
           </div>
-          <div class="container-input">
-            <label for="specialist-name">Especialidade:</label>
-            <input
-              type="text"
-              id="specialist-name"
-              formControlName="specialty"
-              required
-            />
+          
+          <div class="container-row">
+            <!-- Campo de Médico -->
+            <div class="container-input">
+              <label for="doctor">Médico(a):</label>
+              <input type="text" id="doctor" formControlName="doctor" required />
+              <span *ngIf="scheduleForm.get('doctor')?.hasError('required') && scheduleForm.get('doctor')?.touched" class="error-message">
+                <p>Este campo é obrigatório.</p>
+              </span>
+            </div>
+
+            <!-- Campo para selecionar paciente -->
+            <div class="container-input">
+              <label for="patient">Paciente:</label>
+              <select id="patient" formControlName="patient" required>
+                <option value="" disabled selected>Selecione um paciente</option>
+                <option *ngFor="let patient of patients" [value]="patient.id">
+                  {{ patient.name }}
+                </option>
+              </select>
+              <span *ngIf="scheduleForm.get('patient')?.hasError('required') && scheduleForm.get('patient')?.touched" class="error-message">
+                <p>O paciente é obrigatório.</p>
+              </span>
+            </div>
           </div>
-          <div class="container-input">
-            <label for="doctor-name">Médico(a):</label>
-            <input
-              type="text"
-              id="doctor-name"
-              formControlName="doctor"
-              required
-            />
-          </div>
+
+          <div class="container-input-field">
+            <label for="obs">Observação:</label>
+            <input type="text" id="obs" formControlName="obs" class="description-field" rows="4" required />
+            <span *ngIf="scheduleForm.get('obs')?.hasError('required') && scheduleForm.get('obs')?.touched" class="error-message">
+              <p>Este campo é obrigatório.</p>
+            </span>
+          </div>  
         </div>
 
+        <!-- Validações no campo de horário -->
         <div class="times">
           <p><strong>Horários</strong></p>
           <select class="times" formControlName="time">
@@ -102,8 +121,12 @@
             <option value="16:30">16:30</option>
             <option value="17:00">17:00</option>
           </select>
-        </div>
-        <button class="reschedule-btn" type="submit">Agendar</button>
+          <span *ngIf="scheduleForm.get('time')?.hasError('required') && scheduleForm.get('time')?.touched" class="error-message">
+            <p>O horário é obrigatório.</p>
+          </span>
+        </div>  
+           <!-- Botão de envio -->
+           <button class="reschedule-btn" type="submit" [disabled]="!scheduleForm.valid">Agendar</button>
       </form>
     </section>
   </div>

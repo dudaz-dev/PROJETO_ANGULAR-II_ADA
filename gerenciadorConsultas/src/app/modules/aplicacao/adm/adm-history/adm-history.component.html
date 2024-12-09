@@ -16,6 +16,14 @@
       </button>  
     </div>
 
+    <div *ngIf="isLoading" class="loading-indicator">
+      Carregando histórico...
+    </div>
+    
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+    
     <div class="containerTag" *ngIf="!isLoading && !errorMessage">
       <div class="rowTag" *ngFor="let card of cardsAdm">
         <mat-card class="example-card" appearance="outlined">
@@ -31,19 +39,14 @@
             </mat-card-content>
           </mat-card-header>
           <mat-card-footer class="footer-content">
-            <p class="date">Data: {{ card.date }}</p>
+            <p class="date">Data: {{ card.date | date }}</p>
             <p class="time">Hora: {{ card.time }}</p>
+            <p><strong>Status:</strong>{{ card.status === 'CANCELED' ? 'Cancelado' : card.status === 'DONE' ? 'Concluído' : card.status }}</p>
           </mat-card-footer>
         </mat-card>
       </div>
     </div>
-
-    <div *ngIf="isLoading" class="loading-container">
-      <p>Carregando...</p>
-    </div>
-    <div *ngIf="errorMessage" class="loading-container">
-      <p>{{ errorMessage }}</p>
-    </div>
+    
   </section>
 
 </main>

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './menu.component.css',
 })
 export class MenuComponent implements OnInit {
-  userRole = sessionStorage.getItem('USER_ROLE');
+  userRole = sessionStorage.getItem('USER_ROLE') || ''; 
 
   constructor(private router: Router) {}
 
@@ -23,13 +23,15 @@ export class MenuComponent implements OnInit {
       this.router.navigate(['/adm-scheduling']);
     }
   }
-
+  
   onHistory(): void {
     if (this.userRole === 'USER') {
-      this.router.navigate(['/aplication/user/history']); 
+      this.router.navigate(['aplication/user/history']); 
+    } else if (this.userRole === 'ADMIN') {
+      this.router.navigate(['aplication/adm/history']); 
     } else {
-      this.router.navigate(['/aplication/adm/history']); 
+      console.error('Papel de usuário inválido:', this.userRole);
     }
-  }
+  } 
 }
 

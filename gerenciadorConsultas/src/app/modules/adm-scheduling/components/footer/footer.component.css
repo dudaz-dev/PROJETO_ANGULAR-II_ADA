@@ -1,5 +1,8 @@
+
+
 .spacer {
   flex: 1 1 auto;
+
 }
 
 .footer {
@@ -13,6 +16,8 @@
   height: 80px;
   font-size: 1rem;
   padding: 0 16px;
+  margin-top: 10%;
+  height: 10vh;
 }
 
 

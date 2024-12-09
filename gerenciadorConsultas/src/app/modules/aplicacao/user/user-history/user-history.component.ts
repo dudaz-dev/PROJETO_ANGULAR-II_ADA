@@ -25,19 +25,9 @@ import { History } from '../../../auth/models/history.model';
   styleUrls: ['./user-history.component.css'],
 })
 export class UserHistoryComponent {
-  /*
-  cards = [
-    {
-      title: 'Consulta',
-      subtitle: 'Dr(a). Ana Maria Braga',
-      info: 'Hospital Ponta Negra',
-      address: 'Av. Ayrton Senna, 34 - Capim Macio',
-      date: 'Seg., 25 de dez. de 2024',
-      time: '11:30 h',
-    },
-  ];*/
-  cards: History[] = []; // Dados recebidos da API
-  isLoading = true;      // Para indicar carregamento
+
+  cards: History[] = []; 
+  isLoading = true;      
   errorMessage = '';
 
   constructor(private historyService: HistoryServiceService) {}
