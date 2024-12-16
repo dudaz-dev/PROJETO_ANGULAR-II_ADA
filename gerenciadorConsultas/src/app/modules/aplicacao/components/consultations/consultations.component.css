@@ -17,7 +17,8 @@
   background-color: #d3d3d3; 
   border-radius: 10px; 
 }
-/* Estilo geral para o container das consultas */
+
+/* Container geral da lista de consultas */
 .consultations-list {
   display: flex;
   align-items: start;
@@ -25,15 +26,12 @@
 
   max-height: 350px;
   background-color: #f9f9f9;
-  padding-left: 100px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 20px 20px 100px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
   overflow-y: auto;
 }
-
 
 /* Título das consultas */
 .consultations-list h2 {
@@ -43,18 +41,17 @@
   margin-bottom: 20px;
 }
 
-.alinhar{   
+/* Alinhamento */
+.alinhar {   
   display: flex;
   flex-direction: row;
   margin-bottom: 16px;  
   gap: 25px;
 }
 
-
 /* Estilo para cada item de consulta */
 .consultation-item {
   width: 550px;
-
 
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -73,29 +70,41 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
+/* Cabeçalho */
 .consultation-header {
   display: flex;
   flex-direction: row;
   gap: 5px;
 }
 
-.consultation-header h3 {
+.consultation-header .especialista {
   font-size: 18px;
   color: #4caf50;
   font-weight: 600;
 }
 
 .consultation-header p {
-  font-size: 16px;
+  font-size: 18px;
   color: #555;
-  font-weight: 700;
+  font-weight: 600;
 }
 
+/* Corpo da consulta */
 .consultation-body p {
   font-size: 14px;
   color: #666;
 }
 
+.consultation-body p strong {
+  color: #333;
+  font-weight: 600;
+}
+
+.consultation-footer{
+  display: flex;
+  justify-content:space-between;
+  flex-direction: row;
+}
 
 .consultation-footer p {
   font-size: 14px;
