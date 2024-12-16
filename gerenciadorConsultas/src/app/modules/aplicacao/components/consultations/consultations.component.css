@@ -1,8 +1,33 @@
+/* Estiliza a barra de rolagem para navegadores que suportam ::-webkit-scrollbar */
+::-webkit-scrollbar {
+  width: 10px; 
+  height: 10px; 
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #666666; 
+  border-radius: 10px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #666666; 
+}
+
+::-webkit-scrollbar-track {
+  background-color: #d3d3d3; 
+  border-radius: 10px; 
+}
 /* Estilo geral para o container das consultas */
 .consultations-list {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+
   max-height: 350px;
   background-color: #f9f9f9;
-  padding: 20px;
+  padding-left: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
@@ -43,13 +68,11 @@
   transition: all 0.3s ease;
 }
 
-/* Efeito de hover para destacar o item */
 .consultation-item:hover {
   transform: translateY(-5px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
-/* Estilo do cabeçalho da consulta (especialidade e médico) */
 .consultation-header {
   display: flex;
   flex-direction: row;
@@ -68,20 +91,18 @@
   font-weight: 700;
 }
 
-/* Corpo da consulta (data, horário e observação) */
 .consultation-body p {
   font-size: 14px;
   color: #666;
 }
 
-/* Rodapé da consulta (status) */
+
 .consultation-footer p {
   font-size: 14px;
   font-weight: 500;
   color: #888;
 }
 
-/* Seção de "Status" com cor diferenciada */
 .consultation-footer p strong {
   color: #333;
 }

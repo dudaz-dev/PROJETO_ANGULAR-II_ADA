@@ -13,15 +13,16 @@
   </nav>
 
   <div class="content">
-    <!-- Lista de agendamentos -->
+  <!-- Lista de agendamentos -->
     <section class="appointments">
       <h2>Consultas Agendadas</h2>
       <div class="appointments-list">
         <div *ngFor="let appointment of appointments | async">
           <div class="appointment-card" *ngIf="appointment.status === 'SCHEDULED'">
             <div class="info" id="specialist">
-              <h3 class="expertise">{{ appointment.specialty }}</h3>
-              <p class="specialist-name">{{ appointment.doctor }}</p>
+              <h3 class="expertise"> <strong>{{ appointment.specialty }}: <br>{{ appointment.doctor }} </strong></h3>
+              <p class="specialist-name"></p>
+              <p class="patient-name"> {{ appointment.obs }}</p>
               <p class="exame" id="date">{{ appointment.date | date }}</p>
               <p class="exame" id="hour">{{ appointment.time }}</p>
             </div>
@@ -33,7 +34,7 @@
                 <button class="cancel-btn" (click)="deleteAppointment(appointment)">Excluir</button>
               </div>
             </div>
-          </div>  
+          </div>
         </div>
       </div>
     </section>
@@ -44,7 +45,7 @@
 
       <form [formGroup]="scheduleForm" (ngSubmit)="submitForm()">
         <div class="container-form">
-          <!-- Campo de Data e Especialidade lado a lado -->
+          <!-- Data e Especialidade -->
           <div class="container-row">
             <div class="container-input">
               <label for="date">Data:</label>
@@ -56,12 +57,12 @@
             <div class="container-input">
               <label for="specialty">Especialidade:</label>
               <input type="text" id="specialty" formControlName="specialty" required />
-              <span *ngIf="scheduleForm.get('specialty')?.hasError('required') && scheduleForm.get('specialty')?.touched" class="error-message">
+              <span *ngIf="scheduleForm.get('specialty')?.invalid && scheduleForm.get('specialty')?.touched" class="error-message">
                 <p>Este campo é obrigatório.</p>
               </span>
             </div>
           </div>
-          
+
           <div class="container-row">
             <!-- Campo de Médico -->
             <div class="container-input">
@@ -72,28 +73,28 @@
               </span>
             </div>
 
-            <!-- Campo para selecionar paciente -->
-            <div class="container-input">
-              <label for="patient">Paciente:</label>
-              <select id="patient" formControlName="patient" required>
-                <option value="" disabled selected>Selecione um paciente</option>
-                <option *ngFor="let patient of patients" [value]="patient.id">
+            <!-- Busca de Pacientes -->
+            <div class="form-group">
+              <label for="patient">Selecionar Paciente:</label>
+              <select id="patient" class="form-control" formControlName="patient">
+                <option *ngFor="let patient of filteredPatients" [value]="patient.id">
                   {{ patient.name }}
                 </option>
               </select>
-              <span *ngIf="scheduleForm.get('patient')?.hasError('required') && scheduleForm.get('patient')?.touched" class="error-message">
-                <p>O paciente é obrigatório.</p>
+              <span *ngIf="scheduleForm.get('patient')?.invalid && scheduleForm.get('patient')?.touched" class="error-message">
+                <p>Selecione um paciente.</p>
               </span>
             </div>
           </div>
 
+          <!-- Observações -->
           <div class="container-input-field">
             <label for="obs">Observação:</label>
-            <input type="text" id="obs" formControlName="obs" class="description-field" rows="4" required />
-            <span *ngIf="scheduleForm.get('obs')?.hasError('required') && scheduleForm.get('obs')?.touched" class="error-message">
+            <input type="text" id="obs" formControlName="obs" class="description-field" required />
+            <span *ngIf="scheduleForm.get('obs')?.invalid && scheduleForm.get('obs')?.touched" class="error-message">
               <p>Este campo é obrigatório.</p>
             </span>
-          </div>  
+          </div>
         </div>
 
         <!-- Validações no campo de horário -->
@@ -125,8 +126,9 @@
             <p>O horário é obrigatório.</p>
           </span>
         </div>  
-           <!-- Botão de envio -->
-           <button class="reschedule-btn" type="submit" [disabled]="!scheduleForm.valid">Agendar</button>
+
+        <!-- Botão de envio -->
+        <button class="reschedule-btn" type="submit" [disabled]="scheduleForm.invalid">Agendar</button>
       </form>
     </section>
   </div>

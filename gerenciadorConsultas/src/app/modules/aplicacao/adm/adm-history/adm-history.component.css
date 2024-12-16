@@ -6,6 +6,26 @@ main {
   height: 90vh;
 }
 
+/* Estiliza a barra de rolagem para navegadores que suportam ::-webkit-scrollbar */
+::-webkit-scrollbar {
+  width: 10px; 
+  height: 10px; 
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #666666; 
+  border-radius: 10px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #666666; 
+}
+
+::-webkit-scrollbar-track {
+  background-color: #d3d3d3; 
+  border-radius: 10px; 
+}
+
 .history {
   min-height: 90%;
   min-width: 90%;

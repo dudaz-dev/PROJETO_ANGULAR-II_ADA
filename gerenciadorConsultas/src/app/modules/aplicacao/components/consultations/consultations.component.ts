@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs'; // Importando Observable
 import { ConsultasService } from '../../services/consultas.service';
-import { Appointments } from '../../Modal/appointments.model';
+import { Appointments } from '../../model/appointments.model';
 
 @Component({
   selector: 'app-consultations',

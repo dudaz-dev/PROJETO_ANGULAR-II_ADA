@@ -10,22 +10,22 @@ app-footer {
 
 /* Estiliza a barra de rolagem para navegadores que suportam ::-webkit-scrollbar */
 ::-webkit-scrollbar {
-  width: 10px; /* Largura da barra de rolagem */
-  height: 10px; /* Altura da barra de rolagem para scroll horizontal */
+  width: 10px; 
+  height: 10px; 
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #666666; /* Cor da barra de rolagem (verde escuro) */
-  border-radius: 10px; /* Arredondamento das bordas */
+  background-color: #666666; 
+  border-radius: 10px; 
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #666666; /* Cor ao passar o mouse */
+  background-color: #666666; 
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #d3d3d3; /* Cor do fundo (verde claro) */
-  border-radius: 10px; /* Arredondamento das bordas do fundo */
+  background-color: #d3d3d3; 
+  border-radius: 10px; 
 }
 
 .schedules-img {
@@ -91,7 +91,7 @@ app-footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   overflow-y: auto;
 }
 

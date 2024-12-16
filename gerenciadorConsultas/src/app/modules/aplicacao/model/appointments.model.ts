@@ -1,4 +1,5 @@
 export interface Appointments {
+patientName: any;
     id: string;             // ID único da consulta (UUID)
     specialty: string;      // Especialidade médica (ex.: 'Cardiologista')
     doctor: string;         // Nome do médico

@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, FormsModule } from '@angular/forms';
 import { SpamService } from '../../common/services/spam.service';
 import { ConsultasService } from '../aplicacao/services/consultas.service';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
-import { Appointments } from '../aplicacao/Modal/appointments.model';
+import { Appointments } from '../aplicacao/model/appointments.model';
 import { Observable } from 'rxjs';
-import { AuthService } from '../auth/services/auth.service';
-import { User } from '../auth/models/user.model'; 
+import { PatientServiceService } from '../auth/services/patient-service.service';
+import { Patient } from '../auth/models/patient.model';
 
 @Component({
   selector: 'app-adm-scheduling',
@@ -18,6 +18,7 @@ import { User } from '../auth/models/user.model';
     FooterComponent,
     CommonModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   templateUrl: './adm-scheduling.component.html',
   styleUrls: ['./adm-scheduling.component.css'],
@@ -25,7 +26,9 @@ import { User } from '../auth/models/user.model';
 export class AdmSchedulingComponent implements OnInit {
   appointments: Observable<Appointments[]> = this.consultasService.listaConsultas$;
   existingDates: string[] = []; // Datas existentes para validação
-  patients: User[] = [];   
+  patients: Patient[] = []; // Lista completa de pacientes
+  filteredPatients: Patient[] = []; // Lista filtrada para busca
+  searchTerm: string = ''; // Termo de busca
 
   scheduleForm: FormGroup = new FormGroup({
     date: new FormControl('', [
@@ -36,18 +39,22 @@ export class AdmSchedulingComponent implements OnInit {
     specialty: new FormControl('', [Validators.required]),
     doctor: new FormControl('', [Validators.required]),
     status: new FormControl('SCHEDULED'),
+    patient: new FormControl('', [Validators.required]),
     obs: new FormControl(''),
   });
 availableTimes: any;
+patient: any;
 
   constructor(
     private consultasService: ConsultasService,
     private spamService: SpamService,
-    private authService: AuthService, // Adicione o AuthService aqui
+    private patientService: PatientServiceService 
   ) {}
 
   ngOnInit(): void {
     console.log('Inicializando adm-scheduling...');
+
+    // Carrega consultas existentes
     this.consultasService.getConsultas().subscribe({
       next: (appointments: Appointments[]) => {
         console.log('Consultas recebidas:', appointments);
@@ -57,6 +64,29 @@ availableTimes: any;
         console.error('Erro ao carregar consultas:', err);
       },
     });
+
+    // Carrega lista de pacientes
+    this.loadPatients();
+  }
+
+  // Método para carregar os pacientes
+  loadPatients(): void {
+    this.patientService.getUsers().subscribe({
+      next: (response: Patient[]) => {
+        this.patients = response; 
+        this.filteredPatients = this.patients; 
+      },
+      error: (err: any) => {
+        console.error('Erro ao carregar pacientes:', err);
+      },
+    });
+  }
+
+  filterPatients(): void {
+    const term = this.searchTerm.toLowerCase();
+    this.filteredPatients = this.patients.filter(patient =>
+      patient.name.toLowerCase().includes(term)
+    );
   }
 
   // Validação personalizada para data
@@ -79,10 +109,6 @@ availableTimes: any;
       return { alreadyExists: true }; // Data e horário já registrados
     }
 
-    if (inputDate > oneMonthFromNow) {
-      return { tooFar: true }; // Data maior que 1 mês
-    }
-
     return null;
   }
 
@@ -94,8 +120,22 @@ availableTimes: any;
       return;
     }
   
+    // Obter o nome do paciente selecionado
+    const selectedPatientId = this.scheduleForm.get('patient')?.value;
+    const selectedPatient = this.patients.find(patient => patient.id === selectedPatientId);
+  
+    if (!selectedPatient) {
+      console.error('Paciente não encontrado.');
+      return;
+    }
+  
+    const patientName = selectedPatient.name;
+    const obs = `Paciente ${patientName}, está com ${this.scheduleForm.get('obs')?.value}`;
+    this.scheduleForm.patchValue({ obs });
+  
     const newAppointment = this.scheduleForm.getRawValue();
   
+    // Salvar o agendamento
     this.consultasService.saveConsulta(newAppointment).subscribe({
       next: () => {
         this.spamService.openSpam('Agendamento realizado com sucesso!');
@@ -107,7 +147,7 @@ availableTimes: any;
       },
     });
   }
-
+  
   markAsDone(id: string): void {
     this.consultasService.markAsDone(id).subscribe({
       next: () => {
