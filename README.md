@@ -2,6 +2,10 @@
 
 Este projeto é o trabalho final do módulo **Angular II**, consistindo no desenvolvimento de uma aplicação para o gerenciamento de consultas médicas. O objetivo é aplicar os conceitos aprendidos ao longo do curso, criando uma solução funcional e organizada.
 
+## 🎨 Design do Projeto  
+O design completo da aplicação foi elaborado no : 
+[🔗 **Figma**](https://www.figma.com/design/sW2Gg05E1qvDBmpEmzw4hD/TRABALHO-ADA?node-id=0-1&t=asS1d6c7R9agFrql-1)  
+
 ## 🌟 Funcionalidades Principais
 
 ### 1. **Cadastro e Login de Usuários**
@@ -40,7 +44,6 @@ O conteúdo do **Dashboard** é ajustado de acordo com o perfil do usuário aute
 - **TypeScript**: Tipagem estática para maior segurança no código.
 - **HTML e SCSS**: Para estilização e estruturação da interface.
 - **API Rest**: Para persistência de dados, baseada no repositório disponibilizado pelo professor.
-
 ## ⚙️ Instalação e Execução
 
 ### 1. Clone o repositório:
@@ -66,10 +69,8 @@ ng start
 ```
 Acesse a aplicação em: `http://localhost:4200`
 
-
 ## 👩‍💻 Desenvolvedores
 Desenvolvido com 💙 pela equipe **Equipe 02**.
-
 
 ## 📝 Licença
 Este projeto está licenciado sob a Licença MIT. Consulte o arquivo LICENSE para mais informações.
